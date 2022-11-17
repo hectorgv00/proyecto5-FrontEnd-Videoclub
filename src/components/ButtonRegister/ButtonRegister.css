@@ -1,0 +1,19 @@
+.buttonRegisterDesign{
+    width: 10vw;
+    height: 8vh;
+    border-radius: 25em;
+    cursor: pointer;
+
+
+}
+
+.bgPink{
+    background-color: #f6019d;
+    -webkit-box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);
+    -moz-box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);
+    box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);
+    
+    
+    
+
+}
