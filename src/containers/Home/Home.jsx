@@ -1,7 +1,7 @@
 import React from "react";
-import ButtonLogin from "../../components/ButtonLogin/ButtonLogin";
-import ButtonRegister from "../../components/ButtonRegister/ButtonRegister";
+import ButtonPeliculas from "../../components/ButtonPeliculas/ButtonPeliculas";
 import "./Home.css"
+import ButtonSeries from "../../components/ButtonSeries/ButtonSeries";
 
 function Home(props) {
   return (
@@ -23,8 +23,18 @@ function Home(props) {
           </div>
           <div className="row">
             <div className="col d-flex justify-content-center">
-            <ButtonLogin/>
-                <ButtonRegister/>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-3 ">
+                        <ButtonSeries/>
+                        </div>
+                        <div className="col-3">
+                        <ButtonPeliculas/>
+                        </div>
+                    </div>
+                </div>
+            
+                
             </div>
           </div>
         </div>
