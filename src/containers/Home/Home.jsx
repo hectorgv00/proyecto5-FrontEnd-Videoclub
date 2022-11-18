@@ -25,13 +25,11 @@ function Home(props) {
             <div className="col d-flex justify-content-center">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-3 ">
+                        <div className="col col-lg-6 d-flex justify-content-center">
                         <ButtonSeries/>
-                        </div>
-                        <div className="col-3">
                         <ButtonPeliculas/>
                         </div>
-                    </div>
+                        </div>
                 </div>
             
                 
