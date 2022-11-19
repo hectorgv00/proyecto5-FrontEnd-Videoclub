@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { Input } from 'antd';
+import {  Input } from 'antd';
 import { errorCheck } from '../../../services/useful';
 import "./Register.css"
+import Button from "../../../components/Button/Button";
+import {registerUser} from  "../../../services/apicalls";
+import { useNavigate } from "react-router-dom";
+
 
 function Register(props) {
 
+const navigate = useNavigate();
 
     // Hooks
 
@@ -13,6 +18,7 @@ function Register(props) {
         surname:"",
         document:"",
         email:"",
+        address:"",
         password:"",
         password2:"",
 
@@ -23,6 +29,7 @@ function Register(props) {
         surnameError:"",
         emailError:"",
         documentError:"",
+        addressError:"",
         passwordError:"",
         password2Error:"",
 
@@ -53,8 +60,27 @@ function Register(props) {
 
     }
 
+    // Funcion onSubmit del form
+
+    const sendBody = (e) =>{
+      e.preventDefault();
+      registerUser(body)
+      navigate("/")
+
+    }
+
+    const body = {
+      name:user.name,
+      surname:user.surname,
+      document:user.document,
+      address:user.address,
+      email:user.email,
+      password:user.password
+
+    }
+
   return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+    <form onSubmit={sendBody} className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
 
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
@@ -75,6 +101,10 @@ function Register(props) {
 
         <div className="errorInput mb-3"> {userError.documentError} </div>
 
+        <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
+
+        <div className="errorInput mb-3"> {userError.documentError} </div>
+
         <Input name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="Email" />
 
         <div className="errorInput mb-3"> {userError.emailError} </div>
@@ -88,6 +118,7 @@ function Register(props) {
 
         <div className="errorInput mb-3"> {userError.password2Error} </div>
 
+        <Button className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Regístrate"}  />
         </div>
       </div>
     </form>

@@ -17,6 +17,26 @@
 
 }
 
+.bgTransition{
+    animation: bgChange 10s infinite alternate;
+
+}
+
+
+@keyframes bgChange {
+    from {
+        background-color: 	#9700cc;
+        -webkit-box-shadow: 0px 0px 34px 6px rgba(150,0,204,0.4);
+        -moz-box-shadow: 0px 0px 34px 6px rgba(150,0,204,0.4);
+        box-shadow: 0px 0px 34px 6px rgba(150,0,204,0.4);
+    }
+  
+    to {
+        background-color: 	#f6019d;
+        -webkit-box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);
+        -moz-box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);
+        box-shadow: 0px 0px 34px 6px rgba(246,1,157,0.4);    }
+  }
 
 .bgPink{
     background-color: #f6019d;
