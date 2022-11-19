@@ -1,0 +1,16 @@
+.detailsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.col {
+    max-width: 400px;
+    height: auto;
+    height: 80%;
+    margin: 1em;
+}
+
+.detailImage{
+    border-radius: 15px;
+}
