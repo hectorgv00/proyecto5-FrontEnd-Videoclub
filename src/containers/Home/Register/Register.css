@@ -2,7 +2,9 @@
     width: 20vw;
 }
 
-.inputWidth::placeholder{
-    color: #000;
-    opacity: .7;
+
+
+.errorInput{
+    color: red;
+
 }
