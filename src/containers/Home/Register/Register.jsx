@@ -54,7 +54,7 @@ function Register(props) {
     }
 
   return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-2">
+    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
 
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
@@ -79,7 +79,7 @@ function Register(props) {
 
         <div className="errorInput mb-3"> {userError.emailError} </div>
 
-        <Input.Password name="password" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "password1")} type="password" placeholder="Contraseña" />
+        <Input.Password name="password" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "password")} type="password" placeholder="Contraseña" />
 
         <div className="errorInput mb-3"> {userError.passwordError} </div>
 

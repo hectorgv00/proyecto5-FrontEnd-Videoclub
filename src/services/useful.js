@@ -1,5 +1,5 @@
 
-export const errorCheck = (value,type, password1) => {
+export const errorCheck = ( value,type, password1) => {
 
     switch(type){
 
@@ -28,6 +28,25 @@ export const errorCheck = (value,type, password1) => {
             } 
 
         break;
+
+        case "password":
+            if (value.length < 8) {
+                return"La contraseña debe contener al menos 8 carácteres";
+              }
+              // validate it has one lower case letter
+              if (!value.match(/[a-z]/)) {
+                return"La contraseña debe contener al menos una minúscula";
+              }
+              // validate it has one upper case letter
+              if (!value.match(/[A-Z]/)) {
+                return"La contraseña debe contener al menos una mayúscula";
+              }
+              // validate it has one number
+              if (!value.match(/[0-9]/)) {
+                return"La contraseña debe contener al menos un número";
+              }
+
+              break;
 
         case "password2":
 
