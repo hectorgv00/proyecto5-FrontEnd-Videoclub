@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Registered() {
     
-    const [time, setTime] = useState(3);
+    // const [time, setTime] = useState(3);
 
     const navigate = useNavigate()
     const redirect = () =>{

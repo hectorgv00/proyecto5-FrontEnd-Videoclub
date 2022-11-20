@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 export const errorCheck = ( value,type, password1) => {
 
@@ -14,8 +14,8 @@ export const errorCheck = ( value,type, password1) => {
             }
 
         break;
+        
         case "name":
-
             if (value === "") {
                 return "Este campo no puede estar vacío";
             } else if(! /[a-z]/gi.test(value)){
@@ -29,7 +29,7 @@ export const errorCheck = ( value,type, password1) => {
 
         case "email":
 
-            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value) ) {
+            if (! /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value) ) {
                 return "Escriba un formato correcto de email";
             }else{
                 return ""
