@@ -1,5 +1,7 @@
+import axios from "axios";
 
 export const errorCheck = ( value,type, password1) => {
+
 
     switch(type){
 
@@ -7,7 +9,9 @@ export const errorCheck = ( value,type, password1) => {
 
             if (! /[a-z]/gi.test(value)) {
                 return "Formato no válido";
-            } 
+            } else{
+                return ""
+            }
 
         break;
         case "name":
@@ -16,16 +20,20 @@ export const errorCheck = ( value,type, password1) => {
                 return "Este campo no puede estar vacío";
             } else if(! /[a-z]/gi.test(value)){
                 return "Formato no válido";
-
+            }else{
+                return ""
             }
 
         break;
+
 
         case "email":
 
             if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value) ) {
                 return "Escriba un formato correcto de email";
-            } 
+            }else{
+                return ""
+            }
 
         break;
 
@@ -44,7 +52,9 @@ export const errorCheck = ( value,type, password1) => {
               // validate it has one number
               if (!value.match(/[0-9]/)) {
                 return"La contraseña debe contener al menos un número";
-              }
+              }else{
+                return ""
+            }
 
               break;
 
@@ -52,6 +62,8 @@ export const errorCheck = ( value,type, password1) => {
 
             if(value !== password1){
                 return "Las contraseñas no coinciden"
+            }else{
+                return ""
             }
 
         break;

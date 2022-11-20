@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {  Input } from 'antd';
-import { errorCheck } from '../../../services/useful';
+import { errorCheck } from '../../services/useful';
 import "./Register.css"
-import Button from "../../../components/Button/Button";
-import {registerUser} from  "../../../services/apicalls";
+import Button from "../../components/Button/Button";
+import {registerUser} from  "../../services/apicalls";
 import { useNavigate } from "react-router-dom";
 
 
@@ -32,6 +32,7 @@ const navigate = useNavigate();
         addressError:"",
         passwordError:"",
         password2Error:"",
+        nocompletedError:"",
 
     })
 
@@ -64,9 +65,23 @@ const navigate = useNavigate();
 
     const sendBody = (e) =>{
       e.preventDefault();
-      registerUser(body)
-      navigate("/")
+      if(validateBody(body)){
+        registerUser(body)
+        navigate("/registered")
+      }else{
+        setUserError(((prevState) => ({
+          ...prevState,
+          nocompletedError: "No se puede enviar el formulario. Revise que no hay campos vacíos y que el formato de los mismos es el correcto"
 
+      })));
+      }
+      
+
+    }
+
+
+    const validateBody =(body)=>{
+      if(body.name !== "" && body.surname !== "" && body.document !== "" && body.address !== "" && body.email !== "" && body.password !== "" && userError.nameError ==="" && userError.surnameError ==="" && userError.documentError ==="" && userError.documentError ==="" && userError.addressError ===""  && userError.emailError ===""  && userError.passwordError ===""  && userError.password2Error ===""  ){ return true} 
     }
 
     const body = {
@@ -86,6 +101,9 @@ const navigate = useNavigate();
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
             <h1 className="text-light mb-3">Crea tu cuenta</h1>
             <h3 className="text-light mb-5">Estás a punto de empezar a disfrutar del mejor entretenimiento con <span className="direct">Direct</span></h3>
+
+            <div className="errorInput mb-3 ft-5"> {userError.nocompletedError} </div>
+
 
             {/* Inputs */}
 
