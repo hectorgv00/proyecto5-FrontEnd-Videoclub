@@ -1,0 +1,26 @@
+.searchForm {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBox{
+    position: relative;
+}
+
+.searchInput{
+    height: 2rem;
+    border-radius: .2rem;
+    padding: .2rem 2rem .2rem 1rem;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.searchButton{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
