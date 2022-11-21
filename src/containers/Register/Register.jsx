@@ -3,11 +3,26 @@ import {  Input } from 'antd';
 import { errorCheck } from '../../services/useful';
 import "./Register.css"
 import Button from "../../components/Button/Button";
-import {registerUser} from  "../../services/apicalls";
+// import {registerUser} from  "../../services/apicalls";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 function Register(props) {
+
+   const registerUser = async (body) => {
+    let resp = await axios.post("http://127.0.0.1:3000/users/register",body);
+    if(resp.data === `The user with email: ${body.email} has been created successfully` ){
+      navigate("/registered")
+    }else{
+      setUserError(((prevState) => ({
+        ...prevState,
+        emailAlready: "El email ya está en el sistema"
+
+    })));
+    }
+
+};
 
 const navigate = useNavigate();
 
@@ -33,6 +48,7 @@ const navigate = useNavigate();
         passwordError:"",
         password2Error:"",
         nocompletedError:"",
+        emailAlready:"",
 
     })
 
@@ -67,7 +83,6 @@ const navigate = useNavigate();
       e.preventDefault();
       if(validateBody(body)){
         registerUser(body)
-        navigate("/registered")
       }else{
         setUserError(((prevState) => ({
           ...prevState,
@@ -103,6 +118,7 @@ const navigate = useNavigate();
             <h3 className="text-light mb-5">Estás a punto de empezar a disfrutar del mejor entretenimiento con <span className="direct">Direct</span></h3>
 
             <div className="errorInput mb-3 ft-5"> {userError.nocompletedError} </div>
+            <div className="errorInput mb-3 ft-5"> {userError.emailAlready} </div>
 
 
             {/* Inputs */}
