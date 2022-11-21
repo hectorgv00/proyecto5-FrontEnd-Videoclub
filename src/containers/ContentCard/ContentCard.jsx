@@ -1,8 +1,12 @@
 import "./ContentCard.css";
 import { Link } from "react-router-dom";
+import placerholderImg from "./placeholder.jpg";
 
 export const ContentCard = ({ movie }) => {
-  const imageURL = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+  // TODO: refactor to function getImgMovie()
+  const imageURL = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+    : placerholderImg;
 
   return (
     <li className="contentCard">

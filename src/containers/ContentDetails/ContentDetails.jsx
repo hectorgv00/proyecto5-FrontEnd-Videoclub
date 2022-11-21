@@ -2,18 +2,29 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ContentDetails.css";
 import { httpGet } from "./httpClient";
+import { Spinner } from "./Spinner";
 
 export const ContentDetails = () => {
+
   const { contentId } = useParams();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+
+    setIsLoading(true);
+
     httpGet("/movie/" + contentId).then((data) => {
-      console.log(data);
+
+      setIsLoading(false);
+
       setMovie(data);
     });
   }, [contentId]);
+
+  if (isLoading) return <Spinner />
 
   if (!movie) return null;
 
