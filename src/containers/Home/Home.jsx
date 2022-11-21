@@ -2,9 +2,36 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Button from "../../components/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, login } from "../../slices/userSlice";
+
 
 function Home(props) {
   const navigate = useNavigate();
+
+
+
+  // Provisional añadir token
+
+    const dispach = useDispatch()
+
+    const userReduzCredentials = useSelector(userData);
+
+    const fakeLogin = () =>{
+      let credentials ={
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjozNywiZW1haWwiOiJhQTFhYWFhQGEuY29tIiwicm9sSWRSb2wiOjIsImlhdCI6MTY2OTA1MjQ5M30._AA1EqBaAbFo12TIKGayrpLLJmb2O4xDfbePlaXez8s",
+        name: "alejandro",
+        email: "elquesea@jkse.com",
+      } 
+      
+      dispach(login({credentials:credentials}));
+      
+      localStorage.setItem("jwt",credentials.token)
+
+      navigate("/")
+      console.log("vale")
+    }
+
 
   return (
     <div>
@@ -45,6 +72,21 @@ function Home(props) {
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
                       }
                     />
+
+
+
+
+                      {/* Button provisional añadir token */}
+
+                    <Button text={"Añadir token provisional"}
+                    onClick={()=>fakeLogin()}
+                    />
+                  
+                  {/* ________________________________________________ */}
+                  
+                  
+                  
+                  
                   </div>
                 </div>
               </div>
