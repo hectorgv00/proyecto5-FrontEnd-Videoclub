@@ -1,6 +1,5 @@
 .navbarDesign{
     height: 10vh;
-    width: 100%;
     background-color: #000;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -27,7 +26,10 @@ width: 5em;
     cursor: pointer;
     transition: all 1s linear;
     text-shadow: 0 0 15px #9700cc;
+}
 
+.fontsize1-5em{
+  font-size: 1.5em;
 
 }
 
@@ -55,3 +57,36 @@ width: 5em;
         text-shadow: 0 0 15px #f6019d;    
     }
   }
+
+  .dropDownDesign{
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    padding: 0 !important;
+  }
+
+  .userIconDesign{
+    width: 30px;
+    height: 30px;
+  }
+
+  .dropdown-toggle::after {
+    display: none !important; 
+  }
+
+  .dropdownMenuDesign{
+    background-color: #000 !important;
+  }
+
+  .fontFamilyGillSans{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    color: #FFF !important;
+  }
+
+  .dropdown-item:active{
+    background-color: #9700cc !important;
+}
+  .dropdown-item:hover{
+    background-color: rgba(151, 0, 204, .3) !important;
+    }
+
