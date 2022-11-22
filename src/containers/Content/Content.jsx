@@ -2,23 +2,17 @@ import './Content.css';
 import { ContentGrid } from '../ContentGrid/ContentGrid';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useQuery } from '../../hooks/useQuery';
-import { Search } from '../../components/Search/Search';
 
 
-export const Content = () => {
+export const Content = ({ title, url }) => {
 
-  // TODO: movies or series
-  
   const query = useQuery();
   const search = query.get("search");
 
   const debouncedSearch = useDebounce(search, 400);
 
-  return (
-    // tip: passing key component reset its state
-    <>
-    {/* <Search className="mt-5"/> */}
-    <ContentGrid key={debouncedSearch} search={debouncedSearch} />
-    </>
-  );
+  // const axiosFn = () => console.log(url);
+
+  return <ContentGrid title={title} key={debouncedSearch} search={debouncedSearch} />
+   
 };

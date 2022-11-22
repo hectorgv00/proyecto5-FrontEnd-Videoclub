@@ -10,18 +10,23 @@ import { Empty } from "../../components/Empty/Empty";
 import {Search} from "../../components/Search/Search";
 
 
-export const ContentGrid = ({ search }) => {
+export const ContentGrid = ({ search, title }) => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
+
     setIsLoading(true);
-    const searchURL = search
+
+  /*   const searchURL = search
       ? "/search/movie?query=" + search + "&page=" + page
-      : "/discover/movie?page=" + page;
-    httpGet(searchURL).then((data) => {
+      : "/discover/movie?page=" + page; */
+
+    const popularSeriesURL = "/tv/popular?&language=en-US&page=" + page
+
+    httpGet(popularSeriesURL).then((data) => {
       setMovies((prevMovies) => prevMovies.concat(data.results));
       setHasMore(data.page < data.total_pages);
       setIsLoading(false);
@@ -35,7 +40,7 @@ export const ContentGrid = ({ search }) => {
       <header className="contentHeader">
         <Search/>
         <Link to="/content">
-          <h1>Content</h1>
+          <h1>{title}</h1>
         </Link>
       </header>
       <InfiniteScroll

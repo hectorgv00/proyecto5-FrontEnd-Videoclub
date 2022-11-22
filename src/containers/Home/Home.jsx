@@ -2,25 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Button from "../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { userData, login } from "../../slices/userSlice";
-
+import { useDispatch } from "react-redux";
 
 function Home(props) {
   const navigate = useNavigate();
-
-
-
-  // Provisional añadir token
-
-    const dispach = useDispatch()
-
-    // const userReduzCredentials = useSelector(userData);
-
-
-    // 
-
-
 
   return (
     <div>
@@ -49,19 +34,18 @@ function Home(props) {
                   <div className="col col-lg-6 d-flex justify-content-center">
                     <Button
                       text={"Series"}
-                      onClick={()=> navigate("/content")}
+                      onClick={() => navigate("/series")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
                       }
                     />
                     <Button
                       text={"Películas"}
-                      onClick={()=> navigate("/content")}
+                      onClick={() => navigate("/movies")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
                       }
-                    />                
-                  
+                    />
                   </div>
                 </div>
               </div>
