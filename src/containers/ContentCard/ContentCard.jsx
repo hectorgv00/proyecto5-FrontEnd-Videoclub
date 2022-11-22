@@ -9,7 +9,7 @@ export const ContentCard = ({ movie }) => {
     : placerholderImg;
 
   return (
-    <li className="contentCard">
+    <li className="contentCard text-light">
       <Link to={`/content/${movie.id}`}>
         <img
           width={230}

@@ -2,23 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Button from "../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { userData, login } from "../../slices/userSlice";
+
 
 
 function Home(props) {
   const navigate = useNavigate();
 
-
-
-  // Provisional añadir token
-
-    const dispach = useDispatch()
-
-    // const userReduzCredentials = useSelector(userData);
-
-
-    // 
 
 
 
