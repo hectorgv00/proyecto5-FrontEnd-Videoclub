@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ContentDetails.css";
-import { httpGet } from "./httpClient";
-import { Spinner } from "./Spinner";
+import { httpGet } from "../../utils/httpClient";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export const ContentDetails = () => {
 

@@ -1,7 +1,7 @@
 import './Content.css';
-import { ContentGrid } from './ContentGrid';
-import { useDebounce } from './hooks/useDebounce';
-import { useQuery } from './hooks/useQuery';
+import { ContentGrid } from '../ContentGrid/ContentGrid';
+import { useDebounce } from '../../hooks/useDebounce';
+import { useQuery } from '../../hooks/useQuery';
 
 export const Content = () => {
 
