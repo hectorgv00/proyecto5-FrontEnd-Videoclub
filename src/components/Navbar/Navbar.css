@@ -26,7 +26,10 @@ width: 5em;
     cursor: pointer;
     transition: all 1s linear;
     text-shadow: 0 0 15px #9700cc;
+}
 
+.fontsize1-5em{
+  font-size: 1.5em;
 
 }
 

@@ -15,13 +15,11 @@ function Home(props) {
 
     const dispach = useDispatch()
 
-    const userReduzCredentials = useSelector(userData);
+    // const userReduzCredentials = useSelector(userData);
 
     const fakeLogin = () =>{
       let credentials ={
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjozNywiZW1haWwiOiJhQTFhYWFhQGEuY29tIiwicm9sSWRSb2wiOjIsImlhdCI6MTY2OTA1MjQ5M30._AA1EqBaAbFo12TIKGayrpLLJmb2O4xDfbePlaXez8s",
-        name: "alejandro",
-        email: "elquesea@jkse.com",
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo1MywibmFtZSI6IkFsYmVydG8iLCJlbWFpbCI6ImFsYmVydG9AbW9yZW5vLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2NjkxMTAyNzR9.GjB6Vp3iSvTHi-synY_kUYpYJfADHUwL5T7DSv3tunw"
       } 
       
       dispach(login({credentials:credentials}));
@@ -29,7 +27,6 @@ function Home(props) {
       localStorage.setItem("jwt",credentials.token)
 
       navigate("/")
-      console.log("vale")
     }
 
 

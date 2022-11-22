@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { userData } from "../../slices/userSlice";
 
 function Registered() {
     
-    // const [time, setTime] = useState(3);
-
+    
+    const userReduxCredentials = useSelector(userData);
     const navigate = useNavigate()
     const redirect = () =>{
         setTimeout(()=> navigate("/"), 3000)
@@ -12,6 +14,17 @@ function Registered() {
 
     useEffect(()=>redirect())
 
+    useEffect(() => {
+
+        console.log(userReduxCredentials);
+  
+        if (userReduxCredentials?.credentials?.token !== undefined || localStorage.getItem("jwt") !== null) {
+  
+          // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home
+  
+            navigate("/");
+        };
+    });
     
 
 
