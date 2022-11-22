@@ -7,7 +7,6 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import { Content } from './containers/Content/Content';
 import { ContentDetails } from './containers/ContentDetails/ContentDetails';
-
 function App() {
   return (
     <>
