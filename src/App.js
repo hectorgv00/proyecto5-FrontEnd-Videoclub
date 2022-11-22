@@ -2,8 +2,9 @@
 import Navbar from "./components/Navbar/Navbar"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from "./containers/Home/Home";
-import Register from "./containers/Register/Register";
 import Registered from "./containers/Registered/Registered";
+import Login from "./containers/Login/Login";
+import Register from "./containers/Register/Register";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/registered" element={<Registered/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="*" element={<Home/>}/>
 
       </Routes>

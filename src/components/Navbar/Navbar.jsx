@@ -126,7 +126,7 @@ function Navbar(props) {
             <li onClick={() => navigate("/")} className="links">
               Home
             </li>
-            <li className="links">Login</li>
+            <li onClick={()=> navigate("/login")} className="links">Login</li>
             <li onClick={() => navigate("/register")} className="links">
               Register
             </li>

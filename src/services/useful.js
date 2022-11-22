@@ -13,8 +13,6 @@ export const errorCheck = ( value,type, password1) => {
                 return ""
             }
 
-        break;
-        
         case "name":
             if (value === "") {
                 return "Este campo no puede estar vacío";
@@ -23,8 +21,6 @@ export const errorCheck = ( value,type, password1) => {
             }else{
                 return ""
             }
-
-        break;
 
 
         case "email":
@@ -35,7 +31,6 @@ export const errorCheck = ( value,type, password1) => {
                 return ""
             }
 
-        break;
 
         case "password":
             if (value.length < 8) {
@@ -56,7 +51,6 @@ export const errorCheck = ( value,type, password1) => {
                 return ""
             }
 
-              break;
 
         case "password2":
 
@@ -66,7 +60,6 @@ export const errorCheck = ( value,type, password1) => {
                 return ""
             }
 
-        break;
 
         default:
             console.log("Error. Report it to someone");
