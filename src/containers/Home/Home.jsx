@@ -17,17 +17,9 @@ function Home(props) {
 
     // const userReduzCredentials = useSelector(userData);
 
-    const fakeLogin = () =>{
-      let credentials ={
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjo1MywibmFtZSI6IkFsYmVydG8iLCJlbWFpbCI6ImFsYmVydG9AbW9yZW5vLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2NjkxMTAyNzR9.GjB6Vp3iSvTHi-synY_kUYpYJfADHUwL5T7DSv3tunw"
-      } 
-      
-      dispach(login({credentials:credentials}));
-      
-      localStorage.setItem("jwt",credentials.token)
 
-      navigate("/")
-    }
+    // 
+
 
 
   return (
@@ -57,32 +49,18 @@ function Home(props) {
                   <div className="col col-lg-6 d-flex justify-content-center">
                     <Button
                       text={"Series"}
-                      onClick={()=> navigate("/series")}
+                      onClick={()=> navigate("/content")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
                       }
                     />
                     <Button
                       text={"Películas"}
-                      onClick={()=> navigate("/peliculas")}
+                      onClick={()=> navigate("/content")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
                       }
-                    />
-
-
-
-
-                      {/* Button provisional añadir token */}
-
-                    <Button text={"Añadir token provisional"}
-                    onClick={()=>fakeLogin()}
-                    />
-                  
-                  {/* ________________________________________________ */}
-                  
-                  
-                  
+                    />                
                   
                   </div>
                 </div>

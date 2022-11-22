@@ -4,26 +4,65 @@ import { errorCheck } from '../../services/useful';
 import "./Login.css"
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, login } from "../../slices/userSlice";
+
 
 
 function Login() {
   const navigate = useNavigate();
+  const dispach = useDispatch()
 
+
+  const userLogin = async (body) => {
+    let resp = await axios.post("http://127.0.0.1:3000/users/login",body);
+    let  jwt = resp.data.jwt;
+    let credentials ={
+      token: jwt
+    } 
+    
+    dispach(login({credentials:credentials}));
+    
+    localStorage.setItem("jwt",credentials.token)
+
+    navigate("/")
+
+
+
+    
+  };
+  
   // Hooks
-
+  
   const [user, setUser] = useState({
     email: "",
     password: "",
-
-
+  
+  
   })
-
+  
+  console.log(user.email);
+  
   const [userError, setUserError] = useState({
     emailError: "",
     passwordError: "",
-
-
+    noEmail:""
+  
   })
+
+
+
+let body = {
+  email:user.email,
+  password:user.password
+}
+
+  const submitLogin = (e) =>{
+    e.preventDefault();
+    userLogin(body)
+  }
+
 
   // Handler de los inputs
 
@@ -51,11 +90,15 @@ function Login() {
   }
 
   return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0" onSubmit={
+      (e)=>submitLogin(e)}>
 
       <div className="row mt-5 justify-content-center">
         <div className="text col-8 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">If you have an account.  Please <span className="colortxt2"> login!</span> </h1>
+
+          <div className="errorInput mb-3 ft-5"> {userError.noEmail} </div>
+
 
           {/* Inputs */}
 
@@ -70,7 +113,6 @@ function Login() {
           <div className="boton">
             <Button
               text={"Login!"}
-              onClick={() => navigate("/Home")}
               className={
                 "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
               }
