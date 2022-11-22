@@ -1,12 +1,12 @@
 import "./ContentGrid.css";
-import { ContentCard } from "./ContentCard";
+import { ContentCard } from "../ContentCard/ContentCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { httpGet } from "./httpClient";
-import { Spinner } from "./Spinner";
-import { Empty } from "./Empty";
+import { httpGet } from "../../utils/httpClient";
+import { Spinner } from "../../components/Spinner/Spinner";
+import { Empty } from "../../components/Empty/Empty";
 
 
 export const ContentGrid = ({ search }) => {

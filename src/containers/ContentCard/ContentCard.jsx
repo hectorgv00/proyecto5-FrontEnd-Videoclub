@@ -1,6 +1,6 @@
 import "./ContentCard.css";
 import { Link } from "react-router-dom";
-import placerholderImg from "./placeholder.jpg";
+import placerholderImg from "../../images/placeholder.jpg";
 
 export const ContentCard = ({ movie }) => {
   // TODO: refactor to function getImgMovie()

@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Content } from './Content';
-import { ContentDetails } from './ContentDetails';
-import { Search } from './Search';
+import { Content } from './containers/Content/Content';
+import { ContentDetails } from './containers/ContentDetails/ContentDetails';
+import { Search } from './components/Search/Search';
 
 export const App = () => {
   return (
