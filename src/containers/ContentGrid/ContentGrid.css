@@ -12,6 +12,12 @@
   justify-content: center;
   gap: 40px;
   padding: 40px;
+
+}
+
+.noOverflow{
+  overflow: hidden; /* Hide scrollbars */
+
 }
 
 @media (max-width: 560px) {

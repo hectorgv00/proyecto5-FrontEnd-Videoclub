@@ -12,9 +12,10 @@ export const Search = () => {
   };
 
   return (
-    <form className="searchForm" onSubmit={handleSubmit}>
-      <div className="searchBox">
+    <form className="searchForm mt-5 bg-black" onSubmit={handleSubmit} >
+      <div className="searchBox mt-5">
         <input
+        autoFocus
           className="searchInput"
           type="text"
           placeholder="Search..."

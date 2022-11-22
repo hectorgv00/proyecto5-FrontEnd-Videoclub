@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { httpGet } from "../../utils/httpClient";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Empty } from "../../components/Empty/Empty";
+import {Search} from "../../components/Search/Search";
 
 
 export const ContentGrid = ({ search }) => {
@@ -30,13 +31,15 @@ export const ContentGrid = ({ search }) => {
   if (!isLoading && movies.length === 0) return <Empty />;
 
   return (
-    <>
-      <header className="contentHeader">
+    <div className="bg-black">
+      <header className="contentHeader mt-5 ">
+        <Search/>
         <Link to="/content">
           <h1>Content</h1>
         </Link>
       </header>
       <InfiniteScroll
+        className="noOverflow"
         dataLength={movies.length}
         hasMore={hasMore}
         next={() => setPage((prevPage) => prevPage + 1)}
@@ -48,6 +51,6 @@ export const ContentGrid = ({ search }) => {
           ))}
         </ul>
       </InfiniteScroll>
-    </>
+    </div>
   );
 };
