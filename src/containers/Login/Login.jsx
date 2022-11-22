@@ -59,7 +59,7 @@ function Login() {
 
           {/* Inputs */}
 
-          <Input className="inputs" name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="User or Email" />
+          <Input className="inputs" name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="Email" />
 
           <div className="errorInput mb-3"> {userError.emailError} </div>
 
