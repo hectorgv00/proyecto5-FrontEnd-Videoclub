@@ -75,7 +75,7 @@ export const ContentDetails = () => {
             <p>{movie.overview}</p>
             <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
             <h2>
-              If you want to whatch this movie, please login through the
+              If you want to watch this movie, please login through the
               following link
             </h2>
             <Button

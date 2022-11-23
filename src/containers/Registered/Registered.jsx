@@ -16,7 +16,6 @@ function Registered() {
 
     useEffect(() => {
 
-        console.log(userReduxCredentials);
   
         if (userReduxCredentials?.credentials?.token !== undefined || localStorage.getItem("jwt") !== null) {
   

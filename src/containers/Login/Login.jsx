@@ -42,7 +42,6 @@ function Login() {
   
   })
   
-  console.log(user.email);
   
   const [userError, setUserError] = useState({
     emailError: "",

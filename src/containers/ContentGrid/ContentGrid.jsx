@@ -31,12 +31,12 @@ export const ContentGrid = ({ search }) => {
   if (!isLoading && movies.length === 0) return <Empty />;
 
   return (
-    <div className="bg-black">
-      <header className="contentHeader">
-        <Search/>
+    <div className="bg-black pt-5">
+      <header className="contentHeader mt-5 pt-5">
         <Link to="/content">
           <h1>Content</h1>
         </Link>
+        <Search/>
       </header>
       <InfiniteScroll
         className="noOverflow"
