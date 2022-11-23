@@ -79,7 +79,7 @@ const validateBody =(body)=>{
   if( body.email !== "" && body.password && userError.emailError ===""  && userError.passwordError ==="" ){ return true} 
 }
 
-  const submitLogin = (e) =>{
+const submitLogin = (e) =>{
     e.preventDefault();
     if(validateBody(body)){
     userLogin(body)

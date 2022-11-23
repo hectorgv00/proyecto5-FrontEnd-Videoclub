@@ -6,11 +6,14 @@ import Button from "../../components/Button/Button";
 // import {registerUser} from  "../../services/apicalls";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { userData } from "../../slices/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { userData, login } from "../../slices/userSlice";
+
+
 
 
 function Register(props) {
+  const dispach = useDispatch()
 
   const userReduxCredentials = useSelector(userData);
 
@@ -19,7 +22,7 @@ function Register(props) {
    const registerUser = async (body) => {
     let resp = await axios.post("http://127.0.0.1:3000/users/register",body);
     if(resp.data === `The user with email: ${body.email} has been created successfully` ){
-      navigate("/registered")
+      await userLogin(bodyLogin)
     }else{
       setUserError(((prevState) => ({
         ...prevState,
@@ -85,7 +88,7 @@ const navigate = useNavigate();
 
     // Funcion onSubmit del form
 
-    const sendBody = (e) =>{
+    const sendBody = async(e) =>{
       e.preventDefault();
       if(validateBody(body)){
         setUserError(((prevState) => ({
@@ -93,7 +96,7 @@ const navigate = useNavigate();
           nocompletedError: ""
 
       })));
-        registerUser(body)
+       await registerUser(body)
       }else{
         setUserError(((prevState) => ({
           ...prevState,
@@ -110,6 +113,8 @@ const navigate = useNavigate();
       if(body.name !== "" && body.surname !== "" && body.document !== "" && body.address !== "" && body.email !== "" && body.password !== "" && userError.nameError ==="" && userError.surnameError ==="" && userError.documentError ==="" && userError.documentError ==="" && userError.addressError ===""  && userError.emailError ===""  && userError.passwordError ===""  && userError.password2Error ===""  ){ return true} 
     }
 
+    // Body Register
+
     const body = {
       name:user.name,
       surname:user.surname,
@@ -118,6 +123,33 @@ const navigate = useNavigate();
       email:user.email,
       password:user.password
 
+    }
+
+    // Body Login
+
+    const bodyLogin = {
+      email:user.email,
+      password:user.password
+
+    }
+
+    // Login Automático al registrarte
+
+    const userLogin = async (bodyLogin) => {
+      let resp = await axios.post("http://127.0.0.1:3000/users/login",bodyLogin);
+  
+  // TODO: Poner spinner para la carga
+  
+      let  jwt = resp.data.jwt;
+      let credentials ={
+        token: jwt
+      } 
+  
+      
+      dispach(login({credentials:credentials}));
+      
+     localStorage.setItem("jwt",credentials.token)
+  
     }
 
     useEffect(() => {
