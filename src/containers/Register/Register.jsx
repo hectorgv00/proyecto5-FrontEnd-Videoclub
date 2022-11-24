@@ -97,6 +97,8 @@ const navigate = useNavigate();
 
       })));
        await registerUser(body)
+         // TODO: Poner spinner para la carga
+
       }else{
         setUserError(((prevState) => ({
           ...prevState,
@@ -138,7 +140,6 @@ const navigate = useNavigate();
     const userLogin = async (bodyLogin) => {
       let resp = await axios.post("http://127.0.0.1:3000/users/login",bodyLogin);
   
-  // TODO: Poner spinner para la carga
   
       let  jwt = resp.data.jwt;
       let credentials ={
@@ -157,7 +158,7 @@ const navigate = useNavigate();
 
       if (userReduxCredentials?.credentials?.token !== undefined || localStorage.getItem("jwt") !== null) {
 
-        // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home
+
 
           navigate("/");
       };
