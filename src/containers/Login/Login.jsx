@@ -12,7 +12,7 @@ import { userData, login } from "../../slices/userSlice";
 
 function Login() {
   const navigate = useNavigate();
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
 
 
   const userLogin = async (body) => {
@@ -39,7 +39,7 @@ function Login() {
     } 
 
     
-    dispach(login({credentials:credentials}));
+    dispatch(login({credentials:credentials}));
     
     localStorage.setItem("jwt",credentials.token)
 
@@ -131,7 +131,7 @@ const submitLogin = (e) =>{
 
           {/* Inputs */}
 
-          <Input className="inputs" name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="Email" />
+          <Input className="inputs" name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="Email"  />
 
           <div className="errorInput mb-3"> {userError.emailError} </div>
 
@@ -143,12 +143,12 @@ const submitLogin = (e) =>{
             <Button
               text={"Login!"}
               className={
-                "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
+                "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center "
               }
             />
           </div>
         </div>
-        <div className="link">
+        <div className="link d-flex justify-content-center">
           <h3 className="text-light mb-5">If you don't have account, please register on <span className="colortxt" onClick={() => navigate("/register")}>Direct</span>  for <span className="colortxt2"> FREE!</span></h3>
 
         </div>

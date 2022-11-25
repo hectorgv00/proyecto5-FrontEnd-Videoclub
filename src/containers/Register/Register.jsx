@@ -13,7 +13,7 @@ import { userData, login } from "../../slices/userSlice";
 
 
 function Register(props) {
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
 
   const userReduxCredentials = useSelector(userData);
 
@@ -147,7 +147,7 @@ const navigate = useNavigate();
       } 
   
       
-      dispach(login({credentials:credentials}));
+      dispatch(login({credentials:credentials}));
       
      localStorage.setItem("jwt",credentials.token)
   
