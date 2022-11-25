@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input } from 'antd';
 import { errorCheck } from '../../services/useful';
-import "./ProfileModify.css"
+import "./ProfileDestroy.css"
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,7 +12,7 @@ import { userData, userout } from "../../slices/userSlice";
 
 
 
-function ProfileModify(props) {
+function ProfileDestroy(props) {
 
   const dispatch = useDispatch()
 
@@ -20,18 +20,14 @@ function ProfileModify(props) {
   let { decodedToken } = useJwt(localStorageToken);
 
   const [user, setUser] = useState({
-    name: "",
-    surname: "",
-    document: "",
-    address: "",
+    email: "",
+    password: "",
 
   })
 
   const [userError, setUserError] = useState({
-    nameError: "",
-    surnameError: "",
-    documentError: "",
-    addressError: "",
+    emailError: "",
+    passwordError: "",
     nocompletedError: "",
 
   })
@@ -62,13 +58,13 @@ function ProfileModify(props) {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config);
-    if (resp.data === `Tus datos se actualizaron correctamente`) {
+    let resp = await axios.put("http://127.0.0.1:3000/users/delete", body, config);
+    if (resp.data === `Chaito`) {
       navigate("/profile")
     } else {
       setUserError(((prevState) => ({
         ...prevState,
-        dataError: "No se pudieron actualizar tus datos"
+        dataError: "No pudiste borrar tu cuenta"
 
       })));
     }
@@ -143,4 +139,4 @@ function ProfileModify(props) {
   );
 }
 
-export default ProfileModify;
+export default ProfileDestroy;
