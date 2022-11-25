@@ -21,8 +21,8 @@ function App() {
           <Route path="/registered" element={<Registered />} />
           <Route path="/login" element={<Login />} />
 
-          <Route path='/movies' element={<Content title={'movies'} url={'/movies'} />} />
-          <Route path='/series' element={<Content title={'series'} url={'/series'} />} />
+          <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
+          <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
           <Route path='/content/:contentId' element={<ContentDetails />} />
 
           <Route path="*" element={<Home />} />

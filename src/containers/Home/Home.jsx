@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Button from "../../components/Button/Button";
-import { useDispatch } from "react-redux";
 
 function Home(props) {
   const navigate = useNavigate();
