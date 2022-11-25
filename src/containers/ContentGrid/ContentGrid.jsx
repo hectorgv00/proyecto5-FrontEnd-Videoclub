@@ -7,10 +7,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { httpGet } from "../../utils/httpClient";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Empty } from "../../components/Empty/Empty";
-import {Search} from "../../components/Search/Search";
+import { Search } from "../../components/Search/Search";
 
-
-export const ContentGrid = ({ search }) => {
+export const ContentGrid = ({ search, title, type }) => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -18,23 +17,38 @@ export const ContentGrid = ({ search }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    const searchURL = search
-      ? "/search/movie?query=" + search + "&page=" + page
-      : "/discover/movie?page=" + page;
-    httpGet(searchURL).then((data) => {
+
+    let findURL = "";
+
+    // filtering type of content
+    if (type === "movies") {
+      findURL = search
+        ? "/search/movie?query=" + search + "&page=" + page
+        : "/discover/movie?page=" + page;
+    }
+
+    if (type === "series") {
+      findURL = search 
+      ? "/search/tv?query=" + search + "&page" + page
+      : "/tv/popular?&language=en-US&page=" + page 
+    }
+
+    // fetching by type of content
+    httpGet(findURL).then((data) => {
       setMovies((prevMovies) => prevMovies.concat(data.results));
       setHasMore(data.page < data.total_pages);
       setIsLoading(false);
     });
-  }, [search, page]);
+  }, [type, page, search]);
 
   if (!isLoading && movies.length === 0) return <Empty />;
 
   return (
     <div className="bg-black pt-5">
       <header className="contentHeader mt-5 pt-5">
+
         <Link to="/content">
-          <h1>Content</h1>
+          <h1>{title}</h1>
         </Link>
         <Search/>
       </header>
