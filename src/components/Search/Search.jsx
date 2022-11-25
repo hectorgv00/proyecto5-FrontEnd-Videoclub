@@ -12,8 +12,8 @@ export const Search = () => {
   };
 
   return (
-    <form className="searchForm mt-5 bg-black" onSubmit={handleSubmit} >
-      <div className="searchBox mt-5">
+    <form className="searchForm  bg-black" onSubmit={handleSubmit} >
+      <div className="searchBox ">
         <input
         autoFocus
           className="searchInput"

@@ -24,7 +24,7 @@ width: 5em;
     color: 	#9700cc;
     font-size: 1.5em;
     cursor: pointer;
-    transition: all 1s linear;
+    transition: color 1s linear;
     text-shadow: 0 0 15px #9700cc;
 }
 
@@ -34,7 +34,7 @@ width: 5em;
 }
 
 .links:hover{
-    transition: all 1s linear;
+    transition: color 1s linear;
     color: 	#f6019d;
     text-shadow: 0 0 15px #f6019d;
 
