@@ -14,6 +14,7 @@ function Navbar(props) {
 
   // Redux items
 
+
   const userReduxCredentials = useSelector(userData);
   const dispatch = useDispatch();
 
@@ -38,6 +39,7 @@ function Navbar(props) {
   if (decodedToken === null) {
     decodedToken = { name: "" };
   }
+
 
   // We render the app depending on the existance of the token
   if (
