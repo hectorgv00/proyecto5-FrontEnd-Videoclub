@@ -1,0 +1,13 @@
+.profileLoansDesign {
+  margin-top: 10vh;
+  
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  width: 100%;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
