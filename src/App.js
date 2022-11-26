@@ -10,6 +10,7 @@ import { ContentDetails } from './containers/ContentDetails/ContentDetails';
 import Profile from "./containers/Profile/Profile";
 import ProfileModify from "./containers/ProfileModify/ProfileModify";
 import { ProfileLoans } from "./containers/ProfileLoans/ProfileLoans";
+import { LoanDetails } from "./containers/LoanDetails/LoanDetails";
 function App() {
   return (
     <>
@@ -26,7 +27,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/profileloans" element={<ProfileLoans />} />
-          <Route path="/profilemodify" element={<ProfileModify/>}/>
+          <Route path="/profileloans/:loanId" element={ <LoanDetails />} />
+          <Route path="/profilemodify" element={<ProfileModify />}/>
           <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
           <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
           <Route path='/content/:contentId' element={<ContentDetails />} />
