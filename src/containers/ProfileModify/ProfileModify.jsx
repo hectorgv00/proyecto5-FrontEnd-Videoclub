@@ -135,10 +135,6 @@ function ProfileModify(props) {
 
           <div className="errorInput mb-3"> {userError.surnameError} </div>
 
-          <Input name="document" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="DNI/NIE" />
-
-          <div className="errorInput mb-3"> {userError.documentError} </div>
-
           <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
 
           <div className="errorInput mb-3"> {userError.documentError} </div>
