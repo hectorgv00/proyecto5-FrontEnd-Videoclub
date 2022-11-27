@@ -1,26 +1,30 @@
 import "./ProfileLoans.css";
-// import fakeMovies from "../../utils/fakeMovies.json";
-// import fakeSeries from "../../utils/fakeSeries.json";
-// import { ContentCard } from "../ContentCard/ContentCard";
 import { useEffect, useState } from "react";
 import { getMyLoansMovies, getMyLoansSeries } from "../../utils/httpClient";
 import { LoanCard } from "../LoanCard/LoanCard";
+// import { Spinner } from "../../components/Spinner/Spinner";
 
 export const ProfileLoans = () => {
 
   const [movies, setMovies] = useState('');
   const [series, setSeries] = useState('');
+
+  // const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
+    // setIsLoading(true)
     getMyLoansMovies().then(data => setMovies(data))
+    // setIsLoading(false)
   }, []);
 
   useEffect(() => {
+    // setIsLoading(true)
     getMyLoansSeries().then(data => setSeries(data))
+    // setIsLoading(false)
   }, []);
 
   
-  if ( movies.length === 0 || series.length === 0) return <h1>No matches</h1>;
+  // if (isLoading) return <Spinner />
 
   return (
     <div className="profileLoansDesign">
@@ -30,7 +34,7 @@ export const ProfileLoans = () => {
         <div className="contentRented">
           <h2>Movies</h2>
           <ul className="contentGrid">
-            {movies.map((movie) => (
+            {movies?.map((movie) => (
               <LoanCard key={movie.id_loan} content={movie} />
             ))}
           </ul>
@@ -41,7 +45,7 @@ export const ProfileLoans = () => {
         <div className="contentRented">
           <h2>Series</h2>
           <ul className="contentGrid">
-            {series.map((serie) => (
+            {series?.map((serie) => (
               <LoanCard key={serie.id_loan} content={serie} />
             ))}
           </ul>

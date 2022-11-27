@@ -13,7 +13,7 @@ export function httpGet(path) {
         .then((res) => res.json())
 };
 
-export function getMyLoansMovies () {
+export function  getMyLoansMovies () {
     return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
         headers: {
             Authorization:
