@@ -2,7 +2,7 @@ import "./ProfileLoans.css";
 import { useEffect, useState } from "react";
 import { getMyLoansMovies, getMyLoansSeries } from "../../utils/httpClient";
 import { LoanCard } from "../LoanCard/LoanCard";
-// import { Spinner } from "../../components/Spinner/Spinner";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export const ProfileLoans = () => {
 
@@ -24,7 +24,7 @@ export const ProfileLoans = () => {
   }, []);
 
   
-  // if (isLoading) return <Spinner />
+  if (movies.length === 0 || series.length === 0) return <Spinner />
 
   return (
     <div className="profileLoansDesign">
