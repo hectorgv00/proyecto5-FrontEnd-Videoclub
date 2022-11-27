@@ -1,0 +1,17 @@
+.loanDetailsDesign {
+    margin-top: 10vh;
+
+    height: 50vh;
+
+    background-color: white;
+
+    color: black;
+}
+
+.spinnerDesign {
+    margin-top: 10vh;
+}
+
+.detailImage {
+    border-radius: 15px;
+}

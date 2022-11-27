@@ -18,9 +18,7 @@ export const ProfileLoans = () => {
   useEffect(() => {
     getMyLoansSeries().then(data => setSeries(data))
   }, []);
-  
-  console.log(movies);
-  console.log(series);
+
   
   if ( movies.length === 0 || series.length === 0) return <h1>No matches</h1>;
 

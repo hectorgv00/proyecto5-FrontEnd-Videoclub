@@ -17,7 +17,7 @@ export function getMyLoansMovies () {
     return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
         headers: {
             Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6ImhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0NDg1MTB9.NuebQQ72AaqL_-XlkmmTuLKFLE6s6iaHWTBga1vlU7o",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6IkhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0ODgyOTJ9.qPONZ_eRj0Qhm0NHJjsXdpsEZsUPJhsHpunMDBe-09E",
 
             "Content-type": "application/json;charset=utf-8",
         },
@@ -30,7 +30,7 @@ export function getMyLoansSeries () {
     return fetch('http://127.0.0.1:3000/loans/myloans/series', {
         headers: {
             Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6ImhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0NDg1MTB9.NuebQQ72AaqL_-XlkmmTuLKFLE6s6iaHWTBga1vlU7o",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6IkhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0ODgyOTJ9.qPONZ_eRj0Qhm0NHJjsXdpsEZsUPJhsHpunMDBe-09E",
 
             "Content-type": "application/json;charset=utf-8",
         },

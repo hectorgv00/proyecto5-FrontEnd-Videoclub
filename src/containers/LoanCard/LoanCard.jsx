@@ -12,10 +12,10 @@ export const LoanCard = ({ content }) => {
     dispatch(viewLoan({
       content: content
     }))
-    navigate(`/profileloans/${content.id_loan}`);
+    navigate(`/profileloans/details`);
   }
 
-  console.log(content.id_loan)
+  
   return (
     <li key={content.id_loan} className="contentCard text-light">
         <img

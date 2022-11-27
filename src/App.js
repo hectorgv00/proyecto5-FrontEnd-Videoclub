@@ -27,7 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/profileloans" element={<ProfileLoans />} />
-          <Route path="/profileloans/:loanId" element={ <LoanDetails />} />
+          <Route path="/profileloans/details" element={ <LoanDetails />} />
           <Route path="/profilemodify" element={<ProfileModify />}/>
           <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
           <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
