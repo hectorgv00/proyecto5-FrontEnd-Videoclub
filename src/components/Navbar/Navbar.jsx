@@ -64,7 +64,6 @@ function Navbar(props) {
 
 
               <li className="pink fontsize1-5em ms-2">{decodedToken.name}</li>
-
               {/* Bootstrap Dropdown */}
               <Dropdown>
                 <Dropdown.Toggle
@@ -112,20 +111,18 @@ function Navbar(props) {
   return (
     // Without Token
     <div className="navbarDesign container-fluid fixed-top">
-      <div className=" row">
-        <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center mt-3 ps-0 ps-lg-3">
-          <img src={logo} className="logo image-fluid" alt="logo" />
-        </div>
+      <div className=" row justify-content-around">
+      <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center mt-3 ps-0 ps-lg-3">
+            <img src={logo} onClick={()=> navigate("/")} className="logo image-fluid cursor-pointer" alt="logo" />
+          </div>
 
-        <div className="col-3 col-lg-1 d-xl-flex align-items-center d-none  justify-content-center pe-0 ps-0 pe-lg-5 mt-3 ">
-          <h1 className="direct">Direct</h1>
-        </div>
+          <div className="col-3 col-lg-1 d-xl-flex align-items-center d-none  justify-content-center pe-0 ps-0 pe-lg-5 mt-3 ">
+            <h1 onClick={()=> navigate("/")} className="direct cursor-pointer">Direct</h1>
+          </div>
 
-        <div className="col-6 col-lg-10 d-flex justify-content-end align-items-center mt-3">
+        <div className="col-9 col-lg-10 d-flex justify-content-end align-items-center mt-3 pe-5 pe-lg-0">
           <ul className="listDesign d-flex justify-content-center">
-            <li onClick={() => navigate("/")} className="links">
-              Home
-            </li>
+
             <li onClick={()=> navigate("/login")} className="links">Login</li>
             <li onClick={() => navigate("/register")} className="links">
               Register
