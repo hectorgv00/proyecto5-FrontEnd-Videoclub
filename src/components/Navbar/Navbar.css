@@ -28,6 +28,10 @@ width: 5em;
     text-shadow: 0 0 15px #9700cc;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
 .fontsize1-5em{
   font-size: 1.5em;
 
