@@ -1,0 +1,39 @@
+.profileLoansDesign {
+  margin-top: 10vh;
+  background-color: black;
+  
+  color: white;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  width: 100%;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.contentCard {
+  list-style: none;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: opacity 300ms;
+}
+
+.contentCard:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.contentImage {
+  border-radius: 10%;
+  background-color: azure;
+}
+
+@media (max-width: 560px) {
+  .contentImage {
+    width: 90%;
+    height: auto;
+  }
+}
