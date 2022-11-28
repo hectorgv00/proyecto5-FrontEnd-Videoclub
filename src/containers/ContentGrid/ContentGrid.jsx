@@ -22,24 +22,34 @@ export const ContentGrid = ({ search, title, type }) => {
 
     // filtering type of content
     if (type === "movies") {
-      findURL = search
+
+      findURL = "/movies/page/" + page
+
+      /* findURL = search
         ? "/search/movie?query=" + search + "&page=" + page
-        : "/discover/movie?page=" + page;
+        : "/discover/movie?page=" + page; */
     }
 
     if (type === "series") {
-      findURL = search 
+
+      findURL = "/series/page/" + page
+
+      /* findURL = search 
       ? "/search/tv?query=" + search + "&page" + page
-      : "/tv/popular?&language=en-US&page=" + page 
+      : "/tv/popular?&language=en-US&page=" + page  */
     }
 
     // fetching by type of content
     httpGet(findURL).then((data) => {
-      setMovies((prevMovies) => prevMovies.concat(data.results));
+      console.log(data);
+      setMovies((prevMovies) => prevMovies.concat(data));
+      setMovies(data)
       setHasMore(data.page < data.total_pages);
       setIsLoading(false);
     });
   }, [type, page, search]);
+
+  console.log(movies)
 
   if (!isLoading && movies.length === 0) return <Empty />;
 
@@ -60,8 +70,8 @@ export const ContentGrid = ({ search, title, type }) => {
         loader={<Spinner />}
       >
         <ul className="contentGrid">
-          {movies.map((movie) => (
-            <ContentCard key={movie.id} movie={movie} />
+          {movies.map((movie, index) => (
+            <ContentCard key={index} movie={movie} type={type} />
           ))}
         </ul>
       </InfiniteScroll>

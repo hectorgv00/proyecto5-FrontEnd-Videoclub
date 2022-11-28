@@ -12,6 +12,8 @@ export const ContentDetails = () => {
 
   const { contentId } = useParams();
 
+  console.log(contentId);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [movie, setMovie] = useState(null);
@@ -21,7 +23,10 @@ export const ContentDetails = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    httpGet("/movie/" + contentId).then((data) => {
+    httpGet("/movies/id/" + contentId).then((data) => {
+
+      console.log(data);
+
       setIsLoading(false);
 
       setMovie(data);
@@ -32,7 +37,6 @@ export const ContentDetails = () => {
 
   if (!movie) return null;
 
-  const imageURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   if (
     userReduxCredentials?.credentials?.token !== undefined ||
@@ -43,13 +47,13 @@ export const ContentDetails = () => {
         <div className="row  pt-5 justify-content-around">
           <img
             className="col-xl-3 col bg-black  detailImage mt-5"
-            src={imageURL}
-            alt={movie.title}
+            src={movie[0].poster}
+            alt={movie[0].title}
           />
           <div className="col-xl-7 mt-5 bg-black text-light">
-            <p>{movie.title}</p>
-            <p>{movie.overview}</p>
-            <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
+            <p>{movie[0].title}</p>
+            <p>{movie[0].summary}</p>
+            <p>{movie[0].genre}</p>
             <Button
               text={"Order"}
               className={
@@ -67,13 +71,13 @@ export const ContentDetails = () => {
         <div className="row  pt-5 justify-content-around">
           <img
             className="col-xl-3 col bg-black  detailImage mt-5"
-            src={imageURL}
+            src={movie[0].poster}
             alt={movie.title}
           />
           <div className="col-xl-7 mt-5 bg-black text-light">
-            <p>{movie.title}</p>
-            <p>{movie.overview}</p>
-            <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
+            <p>{movie[0].title}</p>
+            <p>{movie[0].summary}</p>
+            <p>{movie[0].genre}</p>
             <h2>
               If you want to watch this movie, please login through the
               following link
