@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
-import { userData, userout } from "../../slices/userSlice";
+import { userData, userout, login } from "../../slices/userSlice";
 
 
 
@@ -46,32 +46,46 @@ function ProfileModify(props) {
     address: user.address,
     email: decodedToken.email
   };
-  console.log(body.email)
 
   const updateUser = (e) =>{
     e.preventDefault()
     userUpdater(body)
     //We will remove the user details from the store
-    dispatch(userout({ credentials: {} }));
     // We will remove the token from the localStorage
-    localStorage.removeItem("jwt");
     //We will resend the user to Home.
-    return navigate("/");
+    // return navigate("/");
   }
   const userUpdater = async (body) => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
     let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config);
-    if (resp.data === `Tus datos se actualizaron correctamente`) {
-      navigate("/profile")
-    } else {
-      setUserError(((prevState) => ({
-        ...prevState,
-        dataError: "No se pudieron actualizar tus datos"
 
-      })));
-    }
+    if(resp.data.message === "Data modified successfully"){
+    let  jwt = resp.data.jwt;
+    let credentials ={
+      token: jwt
+    } 
+
+    dispatch(userout({ credentials: {} }));
+    dispatch(login({credentials:credentials}));
+    
+    localStorage.removeItem("jwt");
+    localStorage.setItem("jwt",credentials.token)
+
+    navigate("/")
+  }else{
+    setUserError(((prevState) => ({
+      ...prevState,
+      dataError: "No se pudieron actualizar tus datos"
+  
+    })));
+
+  }
+    // if (resp.data === `Tus datos se actualizaron correctamente`) {
+    //   navigate("/profile")
+    // } else {
+    // }
 
   };
 
@@ -120,10 +134,6 @@ function ProfileModify(props) {
           <Input name="surname" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Apellido" />
 
           <div className="errorInput mb-3"> {userError.surnameError} </div>
-
-          <Input name="document" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="DNI/NIE" />
-
-          <div className="errorInput mb-3"> {userError.documentError} </div>
 
           <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
 
