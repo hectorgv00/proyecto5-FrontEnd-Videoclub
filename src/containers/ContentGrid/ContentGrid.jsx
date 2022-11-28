@@ -41,7 +41,7 @@ export const ContentGrid = ({ search, title, type }) => {
 
     // fetching by type of content
     httpGet(findURL).then((data) => {
-      console.log(data);
+      // console.log(data);
       setMovies((prevMovies) => prevMovies.concat(data));
       setMovies(data)
       setHasMore(data.page < data.total_pages);
@@ -49,7 +49,7 @@ export const ContentGrid = ({ search, title, type }) => {
     });
   }, [type, page, search]);
 
-  console.log(movies)
+  // console.log(movies)
 
   if (!isLoading && movies.length === 0) return <Empty />;
 

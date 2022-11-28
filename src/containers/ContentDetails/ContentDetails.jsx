@@ -14,13 +14,13 @@ export const ContentDetails = () => {
   const userReduxCredentials = useSelector(userData);
   const contentType = useSelector(contentData)
 
-  console.log(contentType)
+  // console.log(contentType)
 
   const localStorageToken = localStorage.getItem("jwt")
 
   const { contentId } = useParams();
 
-  console.log(contentId);
+  // console.log(contentId);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,7 +35,7 @@ export const ContentDetails = () => {
 
     httpGet(`/${contentType.content}/id/` + contentId).then((data) => {
 
-      console.log(data);
+      // console.log(data);
 
       setIsLoading(false);
       
@@ -50,7 +50,7 @@ export const ContentDetails = () => {
 
   // Body to add loan
 
-console.log(movie[0].articleIdArticles)
+// console.log(movie[0].articleIdArticles)
 
   let body = {
     article: movie[0].articleIdArticles
@@ -65,28 +65,26 @@ console.log(movie[0].articleIdArticles)
     
     const arrayResponse = respGet.data;
 
-    console.log(arrayResponse)
 
-    if(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles) ){
-      setError("This film is already in your loans");    
-    }
+    const filteredArray = arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false);
 
-    // console.log(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles))
+    console.log(filteredArray.length)
 
-    // const loanedMoviesIdArticle = respGet.filter((resp, index) => {
-    //   console.log(resp)}) 
-
-      // console.log(loanedMoviesIdArticle);
-
-    // if(=== movie[0].articleIdArticles
-    // ){
-    //   console.log("Aquiiiiiiiii");
-    // }
+    if(filteredArray.length > 0 ){
+      console.log(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false));
 
 
 
+      setError("This film is already in your loans");
+    }else{
+    setError("");
     let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
-    navigate("/orders")
+    navigate("/profileloans")
+  }
+
+
+
+
   }
 
   if (

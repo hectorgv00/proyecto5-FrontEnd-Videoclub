@@ -9,7 +9,7 @@ export const LoanDetails = () => {
   const { content } = useSelector(contentData);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(content);
+  // console.log(content);
 
   const fakeDateOfReturn = "2022-12-12 06:32:43";
 

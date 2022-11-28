@@ -27,7 +27,6 @@ export function httpGetSeries(path, jwt) {
 
 
 export function getMyLoansMovies(jwt) {
-    console.log(jwt)
     return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
         headers: {
             Authorization:
@@ -39,7 +38,6 @@ export function getMyLoansMovies(jwt) {
 }
 
 export function getMyLoansSeries(jwt) {
-    console.log(jwt)
     return fetch('http://127.0.0.1:3000/loans/myloans/series', {
         headers: {
             Authorization:

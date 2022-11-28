@@ -42,7 +42,7 @@ function ProfileDestroy(props) {
     address: user.address,
     email: decodedToken.email
   };
-  console.log(body.email)
+  // console.log(body.email)
 
   const updateUser = (e) =>{
     e.preventDefault()
