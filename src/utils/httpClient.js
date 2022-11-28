@@ -1,5 +1,6 @@
 const API = "https://api.themoviedb.org/3";
 
+const jwt = localStorage.getItem("jwt");
 
 export function httpGet(path) {
     return fetch(API + path, {
@@ -37,7 +38,7 @@ export function  getMyLoansMovies () {
     return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
         headers: {
             Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6IkhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0ODgyOTJ9.qPONZ_eRj0Qhm0NHJjsXdpsEZsUPJhsHpunMDBe-09E",
+                "Bearer "+jwt,
 
             "Content-type": "application/json;charset=utf-8",
         },
@@ -50,7 +51,7 @@ export function getMyLoansSeries () {
     return fetch('http://127.0.0.1:3000/loans/myloans/series', {
         headers: {
             Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoyMSwibmFtZSI6IkhlY3RvciIsImVtYWlsIjoiaGVjdG9yQGdtYWlsLmNvbSIsInJvbElkUm9sIjoyLCJpYXQiOjE2Njk0ODgyOTJ9.qPONZ_eRj0Qhm0NHJjsXdpsEZsUPJhsHpunMDBe-09E",
+                "Bearer "+jwt,
 
             "Content-type": "application/json;charset=utf-8",
         },
