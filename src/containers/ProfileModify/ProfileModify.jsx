@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input } from 'antd';
 import { errorCheck } from '../../services/useful';
 import "./ProfileModify.css"
@@ -6,6 +7,7 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useJwt } from "react-jwt";
+
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout, login } from "../../slices/userSlice";
 
