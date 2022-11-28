@@ -6,9 +6,17 @@ import { Spinner } from "../../components/Spinner/Spinner";
 import Button from "../../components/Button/Button";
 import { useSelector } from "react-redux";
 import { userData } from "../../slices/userSlice";
+import { contentData } from "../../slices/contentSlice";
+import axios from "axios";
+
 
 export const ContentDetails = () => {
   const userReduxCredentials = useSelector(userData);
+  const contentType = useSelector(contentData)
+
+  console.log(contentType)
+
+  const localStorageToken = localStorage.getItem("jwt")
 
   const { contentId } = useParams();
 
@@ -18,18 +26,23 @@ export const ContentDetails = () => {
 
   const [movie, setMovie] = useState(null);
 
+  const [error, setError] = useState("")
+
   const navigate = useNavigate();
+
+  console.log(contentType.content)
 
   useEffect(() => {
     setIsLoading(true);
 
-    httpGet("/movies/id/" + contentId).then((data) => {
+    httpGet(`/${contentType.content}/id/` + contentId).then((data) => {
 
       console.log(data);
 
       setIsLoading(false);
-
+      
       setMovie(data);
+      
     });
   }, [contentId]);
 
@@ -37,6 +50,44 @@ export const ContentDetails = () => {
 
   if (!movie) return null;
 
+  // Body to add loan
+
+  let body = {
+    article: movie[0].articleIdArticles
+   }
+
+  const addLoan = async() =>{
+    let config = {
+      headers: { Authorization: "Bearer " + localStorageToken }
+    }
+
+    let respGet = await axios.get("http://127.0.0.1:3000/loans/myloans",config)
+    
+    const arrayResponse = respGet.data;
+
+    console.log(arrayResponse)
+
+    if(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles) ){
+      setError("This film is already in your loans");    
+    }
+
+    // console.log(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles))
+
+    // const loanedMoviesIdArticle = respGet.filter((resp, index) => {
+    //   console.log(resp)}) 
+
+      // console.log(loanedMoviesIdArticle);
+
+    // if(=== movie[0].articleIdArticles
+    // ){
+    //   console.log("Aquiiiiiiiii");
+    // }
+
+
+
+    // let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
+    // navigate("/orders")
+  }
 
   if (
     userReduxCredentials?.credentials?.token !== undefined ||
@@ -59,8 +110,10 @@ export const ContentDetails = () => {
               className={
                 "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
               }
-              onClick={() => navigate("/orders")}
+              onClick={addLoan}
             />
+          <div className="errorInput mb-3 ft-5"> {error} </div>
+
           </div>
         </div>
       </div>
