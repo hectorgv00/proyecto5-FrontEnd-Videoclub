@@ -30,7 +30,7 @@ function Login() {
       noEmail: ""
 
   })));
-
+  
 // TODO: Poner spinner para la carga
 
     let  jwt = resp.data.jwt;
@@ -44,6 +44,12 @@ function Login() {
     localStorage.setItem("jwt",credentials.token)
 
     navigate("/")
+  }else{
+    setUserError(((prevState) => ({
+      ...prevState,
+      noEmail: "The email or password is incorrect"
+
+  })));
   }
 
 
