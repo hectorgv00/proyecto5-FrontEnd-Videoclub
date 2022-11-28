@@ -30,8 +30,6 @@ export const ContentDetails = () => {
 
   const navigate = useNavigate();
 
-  console.log(contentType.content)
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -51,6 +49,8 @@ export const ContentDetails = () => {
   if (!movie) return null;
 
   // Body to add loan
+
+console.log(movie[0].articleIdArticles)
 
   let body = {
     article: movie[0].articleIdArticles
@@ -85,8 +85,8 @@ export const ContentDetails = () => {
 
 
 
-    // let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
-    // navigate("/orders")
+    let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
+    navigate("/orders")
   }
 
   if (

@@ -1,8 +1,9 @@
 
-const jwt = localStorage.getItem("jwt");
+// const jwt = localStorage.getItem("jwt");
 const API = "http://127.0.0.1:3000";
 
-export function httpGet(path) {
+
+export function httpGet(path, jwt) {
     return fetch(API + path, {
         headers: {
             Authorization:
@@ -13,7 +14,7 @@ export function httpGet(path) {
         .then((res) => res.json())
 };
 
-export function httpGetSeries(path) {
+export function httpGetSeries(path, jwt) {
     return fetch(API + path, {
         headers: {
             Authorization:
@@ -25,7 +26,8 @@ export function httpGetSeries(path) {
 };
 
 
-export function getMyLoansMovies() {
+export function getMyLoansMovies(jwt) {
+    console.log(jwt)
     return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
         headers: {
             Authorization:
@@ -36,13 +38,14 @@ export function getMyLoansMovies() {
         .then((res) => res.json())
 }
 
-export function getMyLoansSeries() {
+export function getMyLoansSeries(jwt) {
+    console.log(jwt)
     return fetch('http://127.0.0.1:3000/loans/myloans/series', {
         headers: {
             Authorization:
                 "Bearer " + jwt,
 
-            "Content-type": "application/json;charset=utf-8",
+            // "Content-type": "application/json;charset=utf-8",
         },
     })
 
