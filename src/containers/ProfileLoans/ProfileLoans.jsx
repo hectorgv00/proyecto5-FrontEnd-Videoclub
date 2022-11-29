@@ -8,18 +8,20 @@ export const ProfileLoans = () => {
 
   const [movies, setMovies] = useState('');
   const [series, setSeries] = useState('');
-
+  const jwt = localStorage.getItem("jwt");
   // const [isLoading, setIsLoading] = useState(true);
   
+  
+
   useEffect(() => {
     // setIsLoading(true)
-    getMyLoansMovies().then(data => setMovies(data))
+    getMyLoansMovies(jwt).then(data => setMovies(data))
     // setIsLoading(false)
   }, []);
 
   useEffect(() => {
     // setIsLoading(true)
-    getMyLoansSeries().then(data => setSeries(data))
+    getMyLoansSeries(jwt).then(data => setSeries(data))
     // setIsLoading(false)
   }, []);
 

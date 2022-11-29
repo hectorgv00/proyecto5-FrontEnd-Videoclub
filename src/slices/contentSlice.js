@@ -12,13 +12,19 @@ export const contentSlice = createSlice({
           ...state,
           ...action.payload
         }
+      },
+      contentType: (state, action) => {
+        return {
+          ...state,
+          ...action.payload
+        }
       }
       
     }
     
 });
 
-export const { viewLoan } = contentSlice.actions;
+export const { viewLoan, contentType } = contentSlice.actions;
 
 export const contentData = (state) => state.content;
 

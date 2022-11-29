@@ -27,7 +27,7 @@ export const LoanCard = ({ content }) => {
           alt={content.title}
         />
 
-      <div style={{ color: "black" }}>{content.title}</div>
+      <div>{content.title}</div>
     </li>
   );
 };
