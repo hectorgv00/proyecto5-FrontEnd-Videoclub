@@ -1,24 +1,33 @@
 import "./ContentCard.css";
-import { Link } from "react-router-dom";
-import placerholderImg from "../../images/placeholder.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { contentType } from "../../slices/contentSlice";
 
-export const ContentCard = ({ movie }) => {
-  // TODO: refactor to function getImgMovie()
-  const imageURL = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-    : placerholderImg;
+
+export const ContentCard = ({ movie, type }) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handlerRedux =()=>{
+    dispatch(contentType({
+      content:type
+    }))
+    
+    type=== "movies"?navigate(`/content/${movie.id_movies}`):navigate(`/content/${movie.id_series}`)
+    
+  }
 
   return (
-    <li className="contentCard text-light">
-      <Link to={`/content/${movie.id}`}>
+    <li onClick={()=> handlerRedux()} className="contentCard text-light">
+
         <img
           width={230}
           height={345}
           className="contentImage"
-          src={imageURL}
+          src={movie.poster}
           alt={movie.title}
         />
-      </Link>
+
       <div>{movie.title}</div>
     </li>
   );

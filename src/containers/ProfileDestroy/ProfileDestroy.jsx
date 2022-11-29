@@ -9,7 +9,10 @@ import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout } from "../../slices/userSlice";
 
-function ProfileDestroy() {
+
+
+
+function ProfileDestroy(props) {
 
   const dispatch = useDispatch()
 
@@ -65,10 +68,12 @@ function ProfileDestroy() {
     if (resp.data === `Ya no puedes pasar`) {
       // logout()
       // navigate("/profile")
+
     } else {
       setUserError(((prevState) => ({
         ...prevState,
         dataError: "No pudiste borrar tu cuenta"
+
       })));
     }
 
@@ -126,6 +131,7 @@ function ProfileDestroy() {
             onClick={() => userDestroyed()}
 
           />
+
           <Button
             text={"Vuelve a tu area"}
             onClick={() => navigate("/profile")}

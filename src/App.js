@@ -11,12 +11,15 @@ import Profile from "./containers/Profile/Profile";
 import ProfileModify from "./containers/ProfileModify/ProfileModify";
 import ProfileDestroy from "./containers/ProfileDestroy/ProfileDestroy";
 import ProfileAdmin from "./containers/ProfileAdmin/ProfileAdmin";
+import { ProfileLoans } from "./containers/ProfileLoans/ProfileLoans";
+import { LoanDetails } from "./containers/LoanDetails/LoanDetails";
 function App() {
   return (
     <>
       <BrowserRouter>
 
         <Navbar />
+        
         <Routes>
 
           <Route path="/" element={<Home />} />
@@ -25,9 +28,11 @@ function App() {
           <Route path="/registered" element={<Registered />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="/profileModify" element={<ProfileModify/>}/>
-          <Route path="/profileAdmin" element={<ProfileAdmin/>}/>
-          <Route path="/profileDestroy" element={<ProfileDestroy/>}/>
+          <Route path="/profileadmin" element={<ProfileAdmin/>}/>
+          <Route path="/profiledestroy" element={<ProfileDestroy/>}/>
+          <Route path="/profileloans" element={<ProfileLoans />} />
+          <Route path="/profileloans/details" element={ <LoanDetails />} />
+          <Route path="/profilemodify" element={<ProfileModify />}/>
           <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
           <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
           <Route path='/content/:contentId' element={<ContentDetails />} />

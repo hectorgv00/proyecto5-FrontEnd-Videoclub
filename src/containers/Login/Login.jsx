@@ -5,8 +5,8 @@ import "./Login.css"
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { userData, login } from "../../slices/userSlice";
+import { useDispatch } from "react-redux";
+import {  login } from "../../slices/userSlice";
 
 
 
