@@ -86,6 +86,12 @@ function Navbar(props) {
                     Profile
                   </Dropdown.Item>
                   <Dropdown.Item
+                    onClick={() => navigate("/profileAdmin")}
+                    className="fontFamilyGillSans"
+                  >
+                    Profile Admin
+                  </Dropdown.Item>
+                  <Dropdown.Item
                     onClick={() => navigate("/register")}
                     className="fontFamilyGillSans"
                   >
