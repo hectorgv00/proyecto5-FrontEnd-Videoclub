@@ -9,6 +9,8 @@ import { Content } from './containers/Content/Content';
 import { ContentDetails } from './containers/ContentDetails/ContentDetails';
 import Profile from "./containers/Profile/Profile";
 import ProfileModify from "./containers/ProfileModify/ProfileModify";
+import ProfileDestroy from "./containers/ProfileDestroy/ProfileDestroy";
+import ProfileAdmin from "./containers/ProfileAdmin/ProfileAdmin";
 function App() {
   return (
     <>
@@ -24,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/profileModify" element={<ProfileModify/>}/>
+          <Route path="/profileAdmin" element={<ProfileAdmin/>}/>
+          <Route path="/profileDestroy" element={<ProfileDestroy/>}/>
           <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
           <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
           <Route path='/content/:contentId' element={<ContentDetails />} />

@@ -9,10 +9,7 @@ import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout } from "../../slices/userSlice";
 
-
-
-
-function ProfileDestroy(props) {
+function ProfileDestroy() {
 
   const dispatch = useDispatch()
 
@@ -42,30 +39,36 @@ function ProfileDestroy(props) {
     address: user.address,
     email: decodedToken.email
   };
-  console.log(body.email)
-
-  const updateUser = (e) =>{
-    e.preventDefault()
-    userUpdater(body)
+  const logout = () => {
     //We will remove the user details from the store
     dispatch(userout({ credentials: {} }));
     // We will remove the token from the localStorage
-    localStorage.removeItem("jwt");
-    //We will resend the user to Home.
-    return navigate("/");
+    // localStorage.removeItem("jwt");
+    // //We will resend the user to Home.
+    // return navigate("/");
+  };
+  const destroyUser = (e) => {
+    e.preventDefault()
+    userDestroyed(body)
+    //We will remove the user details from the store
+    dispatch(userout({ credentials: {} }));
+    // We will remove the token from the localStorage
+    // localStorage.removeItem("jwt");
+    // //We will resend the user to Home.
+    // return navigate("/");
   }
-  const userUpdater = async (body) => {
+  const userDestroyed = async (body) => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.put("http://127.0.0.1:3000/users/delete", body, config);
-    if (resp.data === `Chaito`) {
-      navigate("/profile")
+    let resp = await axios.delete("http://127.0.0.1:3000/users/delete", body, config);
+    if (resp.data === `Ya no puedes pasar`) {
+      // logout()
+      // navigate("/profile")
     } else {
       setUserError(((prevState) => ({
         ...prevState,
         dataError: "No pudiste borrar tu cuenta"
-
       })));
     }
 
@@ -101,32 +104,28 @@ function ProfileDestroy(props) {
   }
 
   return (
-    <form onSubmit={(e)=> updateUser(e)} className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+    <form onSubmit={(e) => destroyUser(e)} className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
 
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="text-light mb-3">Modifica tus datos</h1>
+          <h1 className="text-light mb-3">{decodedToken.name}, si eres tu, introduce tus <span className="purple">datos</span> para que sean <span className="pink">aniquilados</span>...</h1>
 
           {/* Inputs */}
 
-          <Input name="name" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
+          <Input name="email" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "email")} type="email" placeholder="Email" />
 
-          <div className="errorInput mb-3 ft-5"> {userError.nameError} </div>
+          <div className="errorInput mb-3"> {userError.emailError} </div>
 
-          <Input name="surname" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Apellido" />
+          <Input.Password name="password" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "password")} type="password" placeholder="Contraseña" />
 
-          <div className="errorInput mb-3"> {userError.surnameError} </div>
+          <div className="errorInput mb-3"> {userError.passwordError} </div>
 
-          <Input name="document" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="DNI/NIE" />
+          <Button
+            text={"Elimina tu cuenta"}
+            className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"}
+            onClick={() => userDestroyed()}
 
-          <div className="errorInput mb-3"> {userError.documentError} </div>
-
-          <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
-
-          <div className="errorInput mb-3"> {userError.documentError} </div>
-
-          <Button className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Registrar cambios"} />
-          
+          />
           <Button
             text={"Vuelve a tu area"}
             onClick={() => navigate("/profile")}
