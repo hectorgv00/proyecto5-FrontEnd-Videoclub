@@ -15,6 +15,13 @@ export const LoanCard = ({ content }) => {
     navigate(`/profileloans/details`);
   }
 
+  let title = "";
+
+  if(content.title.length > 12){
+     title = content.title.slice(0,12) + " ..."
+  }else{
+    title = content.title
+  }
   
   return (
     <li key={content.id_loan} className="contentCard text-light">
@@ -27,7 +34,7 @@ export const LoanCard = ({ content }) => {
           alt={content.title}
         />
 
-      <div>{content.title}</div>
+      <div>{title}</div>
     </li>
   );
 };
