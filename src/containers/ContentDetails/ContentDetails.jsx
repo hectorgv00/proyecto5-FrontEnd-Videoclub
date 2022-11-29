@@ -68,13 +68,7 @@ export const ContentDetails = () => {
 
     const filteredArray = arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false);
 
-    console.log(filteredArray.length)
-
     if(filteredArray.length > 0 ){
-      console.log(arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false));
-
-
-
       setError("This film is already in your loans");
     }else{
     setError("");
