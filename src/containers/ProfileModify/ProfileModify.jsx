@@ -24,7 +24,6 @@ function ProfileModify(props) {
   const [user, setUser] = useState({
     name: "",
     surname: "",
-    document: "",
     address: "",
 
   })
@@ -32,7 +31,6 @@ function ProfileModify(props) {
   const [userError, setUserError] = useState({
     nameError: "",
     surnameError: "",
-    documentError: "",
     addressError: "",
     nocompletedError: "",
 
@@ -44,115 +42,111 @@ function ProfileModify(props) {
   const body = {
     name: user.name,
     surname: user.surname,
-    document: user.document,
     address: user.address,
     email: decodedToken.email
   };
 
-  const updateUser = (e) =>{
+  const updateUser = async (e) => {
     e.preventDefault()
     userUpdater(body)
-    //We will remove the user details from the store
-    // We will remove the token from the localStorage
-    //We will resend the user to Home.
-    // return navigate("/");
   }
+
+
   const userUpdater = async (body) => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config);
-
-    if(resp.data.message === "Data modified successfully"){
-    let  jwt = resp.data.jwt;
-    let credentials ={
-      token: jwt
-    } 
-
+    let validateInputs = (body) => {
+      if ((body.name !== "" && body.surname !== "" && body.address !== "") && (userError.nameError ==="" && userError.surnameError ==="" && userError.addressError ==="" )) 
+      { return true }
+    }
+    if (validateInputs(body)) {
+      setUserError(((prevState) => ({
+        ...prevState,
+        nocompletedError: ""
+      })));
+    let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config)
+    let jwt = resp.data.jwt;
+    let credentials = {
+        token: jwt
+    }
     dispatch(userout({ credentials: {} }));
-    dispatch(login({credentials:credentials}));
-    
+    dispatch(login({ credentials: credentials }));
+
     localStorage.removeItem("jwt");
-    localStorage.setItem("jwt",credentials.token)
+    localStorage.setItem("jwt", credentials.token)
 
-    navigate("/")
-  }else{
+    // navigate("/")
+  } else {
     setUserError(((prevState) => ({
       ...prevState,
-      dataError: "No se pudieron actualizar tus datos"
-  
+      nocompletedError: "No se puede enviar el formulario. Revise que no hay campos vacíos y que el formato de los mismos es el correcto"
     })));
-
   }
-    // if (resp.data === `Tus datos se actualizaron correctamente`) {
-    //   navigate("/profile")
-    // } else {
-    // }
+}
 
-  };
-
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
 
 
-  // Handler de los inputs
+// Handler de los inputs
 
-  const inputHandler = (e) => {
+const inputHandler = (e) => {
 
-    setUser((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
+  setUser((prevState) => ({
+    ...prevState,
+    [e.target.name]: e.target.value
 
-    }));
-  }
+  }));
+}
 
-  const errorHandler = (field, value, type, password1) => {
+const errorHandler = (field, value, type, password1) => {
 
-    let error = "";
+  let error = "";
 
-    error = errorCheck(value, type, password1);
+  error = errorCheck(value, type, password1);
 
-    setUserError(((prevState) => ({
-      ...prevState,
-      [field + "Error"]: error
+  setUserError(((prevState) => ({
+    ...prevState,
+    [field + "Error"]: error
 
-    })));
+  })));
 
-  }
+}
 
-  return (
-    <form onSubmit={(e)=> updateUser(e)} className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+return (
+  <form onSubmit={(e) => updateUser(e)} className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
 
-      <div className="row">
-        <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="text-light mb-3">Modifica tus datos</h1>
+    <div className="row">
+      <div className="col-12 d-flex flex-column justify-content-center align-items-center">
+        <h1 className="text-light mb-3">Modifica tus datos</h1>
 
-          {/* Inputs */}
+        {/* Inputs */}
 
-          <Input name="name" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
+        <Input name="name" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
 
-          <div className="errorInput mb-3 ft-5"> {userError.nameError} </div>
+        <div className="errorInput mb-3 ft-5"> {userError.nameError} </div>
 
-          <Input name="surname" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Apellido" />
+        <Input name="surname" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Apellido" />
 
-          <div className="errorInput mb-3"> {userError.surnameError} </div>
+        <div className="errorInput mb-3"> {userError.surnameError} </div>
 
-          <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
+        <Input name="address" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "text")} type="text" placeholder="Dirección" />
 
-          <div className="errorInput mb-3"> {userError.documentError} </div>
+        <div className="errorInput mb-3"> {userError.documentError} </div>
 
-          <Button className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Registrar cambios"} />
-          
-          <Button
-            text={"Vuelve a tu area"}
-            onClick={() => navigate("/profile")}
-            className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"}
-          />
+        <Button className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Registrar cambios"} />
 
-        </div>
+        <Button
+          text={"Vuelve a tu area"}
+          onClick={() => navigate("/profile")}
+          className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"}
+        />
+
       </div>
-    </form>
-  );
+    </div>
+  </form>
+);
 }
 
 export default ProfileModify;
