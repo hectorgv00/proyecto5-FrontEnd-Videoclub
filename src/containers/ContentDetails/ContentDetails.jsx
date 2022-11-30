@@ -44,7 +44,10 @@ export const ContentDetails = () => {
     });
   }, [contentId]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return (
+  <div className="container-fluid vh-100 bg-black d-flex justify-content-center align-items-center">
+  <Spinner />
+  </div>);
 
   if (!movie) return null;
 
@@ -60,19 +63,19 @@ export const ContentDetails = () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-
     let respGet = await axios.get("http://127.0.0.1:3000/loans/myloans",config)
     
     const arrayResponse = respGet.data;
-
-
+    
     const filteredArray = arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false);
-
+    
     if(filteredArray.length > 0 ){
       setError("This film is already in your loans");
     }else{
-    setError("");
-    let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
+      setError("");
+      console.log(body)
+      let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
+      console.log(respLoan);
     navigate("/profileloans")
   }
 
@@ -86,16 +89,16 @@ export const ContentDetails = () => {
     localStorage.getItem("jwt") !== null
   ) {
     return (
-      <div className="detailsContainer container-fluid vh-100 bg-black pt-5">
-        <div className="row  pt-5 justify-content-around">
+      <div className="detailsContainer container-fluid vh-100 bg-black pt-5 d-flex flex-column justify-content-center mt-5 mt-lg-0 ">
+        <div className="row  pt-5 justify-content-evenly mt-5 mt-lg-0 ">
           <img
-            className="col-xl-3 col bg-black  detailImage mt-5"
+            className="col-xl-3 col bg-black  detailImage mt-5 mt-lg-0"
             src={movie[0].poster}
             alt={movie[0].title}
           />
-          <div className="col-xl-7 mt-5 bg-black text-light">
-            <p>{movie[0].title}</p>
-            <p>{movie[0].summary}</p>
+          <div className="col-xl-5  bg-black text-light d-flex flex-column justify-content-around bg-gray">
+            <h1>{movie[0].title}</h1>
+            <p className="mt-5 text-align-justify">{movie[0].summary}</p>
             <p>{movie[0].genre}</p>
             <Button
               text={"Order"}
@@ -112,21 +115,21 @@ export const ContentDetails = () => {
     );
   } else {
     return (
-      <div className="detailsContainer container-fluid vh-100 bg-black pt-5">
-        <div className="row  pt-5 justify-content-around">
+      <div className="detailsContainer container-fluid vh-100 bg-black pt-5 d-flex flex-column justify-content-center mt-5 mt-lg-0">
+        <div className="row  pt-5 justify-content-evenly mt-5 mt-lg-0">
           <img
-            className="col-xl-3 col bg-black  detailImage mt-5"
+            className="col-xl-3 col bg-black  detailImage mt-5 mt-lg-0"
             src={movie[0].poster}
             alt={movie.title}
           />
-          <div className="col-xl-7 mt-5 bg-black text-light">
-            <p>{movie[0].title}</p>
-            <p>{movie[0].summary}</p>
+          <div className="col-xl-5  bg-black text-light d-flex flex-column justify-content-around bg-gray pb-5">
+            <h1>{movie[0].title}</h1>
+            <p className="mt-5 text-align-justify">{movie[0].summary}</p>
             <p>{movie[0].genre}</p>
-            <h2>
+            <h3>
               If you want to watch this movie, please login through the
               following link
-            </h2>
+            </h3>
             <Button
               text={"Login"}
               className={
