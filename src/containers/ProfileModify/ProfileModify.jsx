@@ -7,6 +7,7 @@ import { errorCheck } from '../../services/useful';
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button/Button";
+
 import "./ProfileModify.css"
 
 import axios from "axios";
@@ -87,6 +88,8 @@ function ProfileModify() {
     let credentials = {
       token: jwt
     }
+    
+    if(a){
     // dispatch(userout({ credentials: {} }))
     dispatch(login({ credentials: credentials }))
     // localStorage.removeItem("jwt")
