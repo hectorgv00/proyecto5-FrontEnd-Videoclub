@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { login } from "../../slices/userSlice";
 import { useJwt } from "react-jwt";
 import { Input } from 'antd';
 import { errorCheck } from '../../services/useful';
@@ -10,11 +9,9 @@ import Button from "../../components/Button/Button";
 
 import "./ProfileModify.css"
 
-import axios from "axios";
-import { useJwt } from "react-jwt";
 
-import { useDispatch, useSelector } from "react-redux";
-import { userData, userout, login } from "../../slices/userSlice";
+import { useDispatch } from "react-redux";
+import { userout, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
 
 
@@ -83,19 +80,21 @@ function ProfileModify() {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let res = await axios.put("http://127.0.0.1:3000/users/modify", body, config)
-    let jwt = res.data.jwt;
-    let credentials = {
-      token: jwt
-    }
-    
-    if(a){
-    // dispatch(userout({ credentials: {} }))
-    dispatch(login({ credentials: credentials }))
-    // localStorage.removeItem("jwt")
-    localStorage.setItem("jwt", credentials.token)
-    navigate("/")
+    let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config);
 
+    if(resp.data.message === "Data modified successfully"){
+    let  jwt = resp.data.jwt;
+    let credentials ={
+      token: jwt
+    } 
+
+    dispatch(userout({ credentials: {} }));
+    dispatch(login({credentials:credentials}));
+    
+    localStorage.removeItem("jwt");
+    localStorage.setItem("jwt",credentials.token)
+
+    navigate("/")
   }else{
     setUserError(((prevState) => ({
       ...prevState,
@@ -109,8 +108,8 @@ function ProfileModify() {
     // } else {
     // }
 
-
   };
+
 
   const navigate = useNavigate();
 

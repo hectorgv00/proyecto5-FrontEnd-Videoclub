@@ -1,7 +1,7 @@
 import "./ContentGrid.css";
 import { ContentCard } from "../ContentCard/ContentCard";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { httpGet } from "../../utils/httpClient";

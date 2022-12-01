@@ -1,25 +1,16 @@
-
-import React, { useState, useEffect } from "react";
-import { Input } from "antd";
-import { errorCheck } from "../../services/useful";
-import "./ProfileDestroy.css";
-import Button from "../../components/Button/Button";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState } from "react";
 import axios from "axios";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
 import { errorCheck } from "../../services/useful";
 import { userout } from "../../slices/userSlice";
 import { useJwt } from "react-jwt";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import "./ProfileDestroy.css";
 
-import { useDispatch, } from "react-redux";
-import {  userout } from "../../slices/userSlice";
-
-function ProfileDestroy(props) {
-  const navigate = useNavigate()
+function ProfileDestroy() {
   const dispatch = useDispatch();
-
 
   let localStorageToken = localStorage.getItem("jwt");
   let { decodedToken } = useJwt(localStorageToken);
@@ -39,7 +30,6 @@ function ProfileDestroy(props) {
     decodedToken = { email: "" };
   }
 
-
   const destroyUser = async (e) => {
     e.preventDefault();
     if (validateInputs()) {
@@ -58,10 +48,8 @@ function ProfileDestroy(props) {
   };
 
   
-
   const logout = () => {
     dispatch(userout({ credentials: {} }));
-
     localStorage.removeItem("jwt");
     return navigate("/");
   };
@@ -76,21 +64,10 @@ function ProfileDestroy(props) {
 
     await axios.delete("http://127.0.0.1:3000/users/delete", { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
 
-
-  const userDestroyed = async (e) => {
-    e.preventDefault();
-
-    let resp = await axios.delete("http://127.0.0.1:3000/users/delete", {
-      data: { email: user.email, password: user.password },
-      headers: { Authorization: "Bearer " + localStorageToken },
-    });
-
-    // TODO: crear la validacion del envio del destroy
-
-    logout()
   };
 
- 
+  const navigate = useNavigate();
+
   const inputHandler = (e) => {
     setUser((prevState) => ({
       ...prevState,
@@ -101,9 +78,6 @@ function ProfileDestroy(props) {
   const errorHandler = (field, value, type, password1) => {
     let error = "";
     error = errorCheck(value, type, password1);
-
-
-
     setUserError((prevState) => ({
       ...prevState,
       [field + "Error"]: error,
@@ -112,20 +86,20 @@ function ProfileDestroy(props) {
 
   return (
     <form
-
       onSubmit={(e) => destroyUser(e)}
-
       className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0"
     >
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">
-
-            {decodedToken.name}, si eres tu, introduce tus{" "}
-            <span className="purple">datos</span> para que sean{" "}
-            <span className="pink">aniquilados</span>...
+            {decodedToken.name}, si eres tu realmente, introduce tu{" "}
+            <span className="purple">email</span> para{" "}
+            <span className="pink">aniquilar</span> tus datos...
           </h1>
-
+          <div className="errorInput mb-3 ft-5">
+            {" "}
+            {userError.nocompletedError}{" "}
+          </div>
 
           {/* Inputs */}
 
@@ -160,9 +134,7 @@ function ProfileDestroy(props) {
 
           <Button
             text={"Vuelve a tu area"}
-
             onClick={() => navigate("/profile")}
-
             className={
               "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
             }
@@ -174,3 +146,4 @@ function ProfileDestroy(props) {
 }
 
 export default ProfileDestroy;
+

@@ -2,7 +2,6 @@ import "./ProfileLoans.css";
 import { useEffect, useState } from "react";
 import { getMyLoansMovies, getMyLoansSeries } from "../../utils/httpClient";
 import { LoanCard } from "../LoanCard/LoanCard";
-// import { Spinner } from "../../components/Spinner/Spinner";
 import Button from "../../components/Button/Button";
 import "../../components/Button/Button.css";
 import { useNavigate } from "react-router-dom";
@@ -20,13 +19,13 @@ export const ProfileLoans = () => {
     // setIsLoading(true)
     getMyLoansMovies(jwt).then((data) => setMovies(data));
     // setIsLoading(false)
-  }, []);
+  });
 
   useEffect(() => {
     // setIsLoading(true)
     getMyLoansSeries(jwt).then((data) => setSeries(data));
     // setIsLoading(false)
-  }, []);
+  });
 
   if (movies.length === 0 && series.length === 0)
     return (
