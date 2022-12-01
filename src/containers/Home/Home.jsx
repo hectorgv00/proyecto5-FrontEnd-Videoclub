@@ -12,8 +12,8 @@ function Home(props) {
         <div className="row mt-5 mt-lg-0">
           <div className="col-12 d-flex align-items-center justify-content-center">
             <h1 className="text-light mb-5">
-              Tus <span className="purple">series</span> y{" "}
-              <span className="pink">películas</span> favoritas
+              Your favourites <span className="purple">series</span> and 
+              <span className="pink"> movies</span> 
             </h1>
           </div>
           <div className="row justify-content-center">
@@ -39,7 +39,7 @@ function Home(props) {
                       }
                     />
                     <Button
-                      text={"Películas"}
+                      text={"Movies"}
                       onClick={() => navigate("/movies")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"

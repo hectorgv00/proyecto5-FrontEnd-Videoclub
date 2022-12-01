@@ -8,16 +8,16 @@ export const errorCheck = ( value,type, password1) => {
         case "text":
 
             if (! /[a-z]/gi.test(value)) {
-                return "Formato no válido";
+                return "Invalid format";
             } else{
                 return ""
             }
 
         case "name":
             if (value === "") {
-                return "Este campo no puede estar vacío";
+                return "This field cannot be left empty";
             } else if(! /[a-z]/gi.test(value)){
-                return "Formato no válido";
+                return "Invalid format";
             }else{
                 return ""
             }
@@ -26,7 +26,7 @@ export const errorCheck = ( value,type, password1) => {
         case "email":
 
             if (! /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value) ) {
-                return "Escriba un formato correcto de email";
+                return "Invalid email format";
             }else{
                 return ""
             }
@@ -34,19 +34,19 @@ export const errorCheck = ( value,type, password1) => {
 
         case "password":
             if (value.length < 8) {
-                return"La contraseña debe contener al menos 8 carácteres";
+                return"Password must be at least 8 characters long";
               }
               // validate it has one lower case letter
               if (!value.match(/[a-z]/)) {
-                return"La contraseña debe contener al menos una minúscula";
+                return"Password must contain at least a lower case";
               }
               // validate it has one upper case letter
               if (!value.match(/[A-Z]/)) {
-                return"La contraseña debe contener al menos una mayúscula";
+                return"Password must contain at least an upper case";
               }
               // validate it has one number
               if (!value.match(/[0-9]/)) {
-                return"La contraseña debe contener al menos un número";
+                return"Password must contain at least a number";
               }else{
                 return ""
             }
@@ -55,7 +55,7 @@ export const errorCheck = ( value,type, password1) => {
         case "password2":
 
             if(value !== password1){
-                return "Las contraseñas no coinciden"
+                return "Passwords do not match"
             }else{
                 return ""
             }

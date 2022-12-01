@@ -41,6 +41,20 @@ function Navbar(props) {
   }
 
 
+// Comprobamos si el id del token es de administrador y en caso afirmativo renderizamos el boton del dropdown
+  const admin = ()=>{
+    if(decodedToken.rolIdRol === 1){
+      return               <Dropdown.Item
+      onClick={() => navigate("/profileAdmin")}
+      className="fontFamilyGillSans"
+    >
+      Profile Admin
+    </Dropdown.Item>
+    }else{
+      return ""
+    }
+  }
+
   // We render the app depending on the existance of the token
   if (
     userReduxCredentials?.credentials?.token !== undefined ||
@@ -85,18 +99,13 @@ function Navbar(props) {
                   >
                     Profile
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => navigate("/profileAdmin")}
-                    className="fontFamilyGillSans"
-                  >
-                    Profile Admin
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => navigate("/register")}
-                    className="fontFamilyGillSans"
-                  >
-                    PRUEBA IR A REGISTER
-                  </Dropdown.Item>
+
+                  {/* Si el rol del token es administrador aparecerá la parte del dropdown del admin */}
+                  {admin()}
+                
+                
+                
+        
 
                   <Dropdown.Divider />
                   <Dropdown.Item

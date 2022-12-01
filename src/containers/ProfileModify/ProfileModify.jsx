@@ -3,16 +3,30 @@ import axios from "axios";
 import { login } from "../../slices/userSlice";
 import { useJwt } from "react-jwt";
 import { Input } from 'antd';
-import { useDispatch } from "react-redux";
 import { errorCheck } from '../../services/useful';
 import { useNavigate } from "react-router-dom";
+
 import Button from "../../components/Button/Button";
 import "./ProfileModify.css"
+
+import axios from "axios";
+import { useJwt } from "react-jwt";
+
+import { useDispatch, useSelector } from "react-redux";
+import { userData, userout, login } from "../../slices/userSlice";
+import { Spinner } from "react-bootstrap";
+
+
+
 
 
 function ProfileModify() {
 
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(false);
+
+
 
   let localStorageToken = localStorage.getItem("jwt");
   let { decodedToken } = useJwt(localStorageToken);
@@ -41,7 +55,9 @@ function ProfileModify() {
     email: decodedToken.email
   };
 
+
   const updateUser = async (e) => {
+  setIsLoading(true)
     e.preventDefault()
     if (validateInputs(user)) {
       userUpdater(body)
@@ -61,6 +77,7 @@ function ProfileModify() {
     if ((body.name !== "" && body.surname !== "" && body.address !== "") && (userError.nameError === "" && userError.surnameError === "" && userError.addressError === "")) { return true }
   };
 
+
   const userUpdater = async (body) => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
@@ -75,6 +92,21 @@ function ProfileModify() {
     // localStorage.removeItem("jwt")
     localStorage.setItem("jwt", credentials.token)
     navigate("/")
+
+  }else{
+    setUserError(((prevState) => ({
+      ...prevState,
+      dataError: "No se pudieron actualizar tus datos"
+  
+    })));
+    setIsLoading(false)
+  }
+    // if (resp.data === `Tus datos se actualizaron correctamente`) {
+    //   navigate("/profile")
+    // } else {
+    // }
+
+
   };
 
   const navigate = useNavigate();
@@ -110,9 +142,12 @@ function ProfileModify() {
           <h1 className="text-light mb-3">Modifica tus datos</h1>
           <div className="errorInput mb-3 ft-5"> {userError.nocompletedError} </div>
 
+            {/* Spinner para cuando carga */}
+            {isLoading ? <Spinner className="purple" /> : ""}
+
           {/* Inputs */}
 
-          <Input name="name" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
+          <Input name="name" className="mt-5" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
 
           <div className="errorInput mb-3 ft-5"> {userError.nameError} </div>
 
