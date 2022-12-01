@@ -10,6 +10,7 @@ import { useJwt } from "react-jwt";
 
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout, login } from "../../slices/userSlice";
+import { Spinner } from "react-bootstrap";
 
 
 
@@ -17,6 +18,8 @@ import { userData, userout, login } from "../../slices/userSlice";
 function ProfileModify(props) {
 
   const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(false);
+
 
   let localStorageToken = localStorage.getItem("jwt")
   let { decodedToken } = useJwt(localStorageToken);
@@ -50,12 +53,10 @@ function ProfileModify(props) {
   };
 
   const updateUser = (e) =>{
+    setIsLoading(true)
     e.preventDefault()
     userUpdater(body)
-    //We will remove the user details from the store
-    // We will remove the token from the localStorage
-    //We will resend the user to Home.
-    // return navigate("/");
+
   }
   const userUpdater = async (body) => {
     let config = {
@@ -82,7 +83,7 @@ function ProfileModify(props) {
       dataError: "No se pudieron actualizar tus datos"
   
     })));
-
+    setIsLoading(false)
   }
     // if (resp.data === `Tus datos se actualizaron correctamente`) {
     //   navigate("/profile")
@@ -127,9 +128,12 @@ function ProfileModify(props) {
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">Modifica tus datos</h1>
 
+            {/* Spinner para cuando carga */}
+            {isLoading ? <Spinner className="purple" /> : ""}
+
           {/* Inputs */}
 
-          <Input name="name" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
+          <Input name="name" className="mt-5" onChange={(e) => inputHandler(e)} onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")} type="text" placeholder="Nombre" />
 
           <div className="errorInput mb-3 ft-5"> {userError.nameError} </div>
 

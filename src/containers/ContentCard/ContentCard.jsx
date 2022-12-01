@@ -17,6 +17,14 @@ export const ContentCard = ({ movie, type }) => {
     
   }
 
+  let title = "";
+
+  if(movie.title.length > 12){
+     title = movie.title.slice(0,12) + " ..."
+  }else{
+    title = movie.title
+  }
+
   return (
     <li onClick={()=> handlerRedux()} className="contentCard text-light">
 
@@ -28,7 +36,7 @@ export const ContentCard = ({ movie, type }) => {
           alt={movie.title}
         />
 
-      <div>{movie.title}</div>
+      <div>{title}</div>
     </li>
   );
 };

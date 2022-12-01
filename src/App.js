@@ -33,7 +33,7 @@ function App() {
           <Route path="/profileloans" element={<ProfileLoans />} />
           <Route path="/profileloans/details" element={ <LoanDetails />} />
           <Route path="/profilemodify" element={<ProfileModify />}/>
-          <Route path='/movies' element={<Content title={'Películas'} type={'movies'} />} />
+          <Route path='/movies' element={<Content title={'Movies'} type={'movies'} />} />
           <Route path='/series' element={<Content title={'Series'} type={'series'}/>} />
           <Route path='/content/:contentId' element={<ContentDetails />} />
 
