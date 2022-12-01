@@ -15,6 +15,8 @@ export const ContentGrid = ({ search, title, type }) => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
+  console.log(search);
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -23,20 +25,21 @@ export const ContentGrid = ({ search, title, type }) => {
     // filtering type of content
     if (type === "movies") {
 
-      findURL = "/movies/page/" + page
+      // findURL = "/movies/page/" + page
+      // ? "/movies/title/" + search + "&page=" + page
 
-      /* findURL = search
-        ? "/search/movie?query=" + search + "&page=" + page
-        : "/discover/movie?page=" + page; */
+      findURL = search
+        ? "/movies/title/" + search
+        : "/movies/page/" + page;
     }
 
     if (type === "series") {
 
-      findURL = "/series/page/" + page
+      // findURL = "/series/page/" + page
 
-      /* findURL = search 
-      ? "/search/tv?query=" + search + "&page" + page
-      : "/tv/popular?&language=en-US&page=" + page  */
+      findURL = search
+        ? "/series/title/" + search
+        : "/series/page/" + page;
     }
 
     // fetching by type of content

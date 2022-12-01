@@ -5,6 +5,12 @@
   color: white;
 }
 
+.noLoansYet {
+  margin-top: 20vh;
+  color: white;
+  background-color: black;
+}
+
 .contentGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 230px);
