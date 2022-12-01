@@ -9,8 +9,11 @@ export const errorCheck = ( value,type, password1) => {
 
             if (! /[a-z]/gi.test(value)) {
                 return "Invalid format";
-            } else{
+            } else if(value.length > 50){
+                return "The input cannot be more than 50 characters long";
+            }else{
                 return ""
+
             }
 
         case "name":
@@ -18,8 +21,11 @@ export const errorCheck = ( value,type, password1) => {
                 return "This field cannot be left empty";
             } else if(! /[a-z]/gi.test(value)){
                 return "Invalid format";
+            }else if(value.length > 50){
+                return "The input cannot be more than 50 characters long";
             }else{
                 return ""
+
             }
 
 
@@ -27,8 +33,11 @@ export const errorCheck = ( value,type, password1) => {
 
             if (! /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value) ) {
                 return "Invalid email format";
+            }else if(value.length > 50){
+                return "The input cannot be more than 50 characters long";
             }else{
                 return ""
+
             }
 
 
@@ -47,8 +56,11 @@ export const errorCheck = ( value,type, password1) => {
               // validate it has one number
               if (!value.match(/[0-9]/)) {
                 return"Password must contain at least a number";
-              }else{
+              }if(value.length > 50){
+                return "The input cannot be more than 50 characters long";
+            }else{
                 return ""
+
             }
 
 
@@ -56,8 +68,11 @@ export const errorCheck = ( value,type, password1) => {
 
             if(value !== password1){
                 return "Passwords do not match"
+            }else if(value.length > 50){
+                return "The input cannot be more than 50 characters long";
             }else{
                 return ""
+
             }
 
 

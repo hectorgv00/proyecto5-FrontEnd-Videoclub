@@ -188,7 +188,7 @@ function Register(props) {
 
           <Input
             name="name"
-            onChange={(e) => inputHandler(e)}
+            onChange={(e) => {inputHandler(e); console.log(e.target.value);}}
             onBlur={(e) => errorHandler(e.target.name, e.target.value, "name")}
             type="text"
             placeholder="Nombre"
