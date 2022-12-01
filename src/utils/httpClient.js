@@ -1,3 +1,5 @@
+import axios from "axios";
+import { Await } from "react-router-dom";
 
 // const jwt = localStorage.getItem("jwt");
 const API = "http://127.0.0.1:3000";
@@ -24,6 +26,29 @@ export function httpGetSeries(path, jwt) {
 
         .then((res) => res.json())
 };
+
+
+export const getUsersAdmin = async (jwt) => {
+    let data = await axios.get('http://127.0.0.1:3000/users/all', {
+        headers: {
+            "Authorization":
+                "Bearer " + jwt
+        },
+
+    })
+    console.log(data)
+    return data
+}
+export function getLoansAdmin(jwt) {
+    return fetch('http://127.0.0.1:3000/loans/allloans', {
+        headers: {
+            "Authorization":
+                "Bearer " + jwt
+        },
+    })
+
+        .then((res) => res.json())
+}
 
 
 export function getMyLoansMovies(jwt) {
