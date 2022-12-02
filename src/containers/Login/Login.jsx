@@ -30,7 +30,6 @@ function Login() {
         noEmail: "",
       }));
 
-      // TODO: Poner spinner para la carga
 
       let jwt = resp.data.jwt;
       let credentials = {
