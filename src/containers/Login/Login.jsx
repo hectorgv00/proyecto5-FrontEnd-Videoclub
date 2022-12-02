@@ -21,6 +21,8 @@ function Login() {
         ...prevState,
         noEmail: "El email o la contraseña son incorrectos",
       }));
+      setIsLoading(false);
+
     } else if (resp.data.message === "Login successful") {
       setUserError((prevState) => ({
         ...prevState,
@@ -78,12 +80,12 @@ function Login() {
     if (validateBody(body)) {
       userLogin(body);
     } else {
+      setIsLoading(false);
       setUserError((prevState) => ({
         ...prevState,
         noEmail:
           "No se puede enviar el formulario. Revise que no hay campos vacíos y que el formato de los mismos es el correcto",
       }));
-      setIsLoading(false);
 
     }
   };
