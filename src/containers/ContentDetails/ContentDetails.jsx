@@ -64,7 +64,7 @@ export const ContentDetails = () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let respGet = await axios.get(`${API}/loans/myloans`,config)
+    let respGet = await axios.get(`${API}loans/myloans`,config)
     
     const arrayResponse = respGet.data;
     
@@ -75,7 +75,7 @@ export const ContentDetails = () => {
     }else{
       setError("");
       console.log(body)
-      let respLoan = await axios.post(`${API}/loans/newloan`,body, config);
+      let respLoan = await axios.post(`${API}loans/newloan`,body, config);
       console.log(respLoan);
     navigate("/profileloans")
   }

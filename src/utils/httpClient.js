@@ -29,7 +29,7 @@ export function httpGetSeries(path, jwt) {
 
 
 export const getUsersAdmin = async (jwt) => {
-    let data = await axios.get( `${API}/users/all`, {
+    let data = await axios.get( `${API}users/all`, {
         headers: {
             "Authorization":
                 "Bearer " + jwt
@@ -63,7 +63,7 @@ export function getMyLoansMovies(jwt) {
 }
 
 export function getMyLoansSeries(jwt) {
-    return fetch(`${API}/loans/myloans/series`, {
+    return fetch(`${API}loans/myloans/series`, {
         headers: {
             Authorization:
                 "Bearer " + jwt,
