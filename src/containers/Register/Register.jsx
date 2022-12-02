@@ -9,7 +9,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
-import {  } from "../../utils/httpClient";
+import { API } from "../../utils/httpClient";
 
 function Register(props) {
   const dispatch = useDispatch();
