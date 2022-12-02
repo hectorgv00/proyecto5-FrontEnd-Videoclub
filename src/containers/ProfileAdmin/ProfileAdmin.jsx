@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useJwt } from "react-jwt";
 import "./ProfileAdmin.css"
-import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { userData, userout } from "../../slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getUsersAdmin, getLoansAdmin } from "../../utils/httpClient"
+import Table from 'react-bootstrap/Table';
+import { Spinner } from "../../components/Spinner/Spinner";
+import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 
-function Profile() {
-  
+
+function ProfileAdmin() {
 
 
+  const [boolean, setBoolean] = useState(true)
+
+  const [users, setUsers] = useState([])
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const localStorageToken = localStorage.getItem("jwt");
@@ -18,39 +25,69 @@ function Profile() {
   if (decodedToken === null) {
     decodedToken = { name: "" };
   }
-  const logout = () => {
-    dispatch(userout({ credentials: {} }));
-    localStorage.removeItem("jwt");
-    return navigate("/");
-  };
+  useEffect(() => {
+    getUsers()
+
+  }, [boolean])
+
+  const getUsers = async () => {
+    let { data } = await getUsersAdmin(localStorageToken)
+    console.log(data)
+    setUsers(data)
+  }
+
+  console.log(users)
+  if (users.length === 0) return <Spinner />
+
+  const handlerDelete = async (e) => {
+    let buttonId = e.target.id
+    let email = users[(buttonId)].email
+    console.log(users[buttonId].email)
+    let resp = await axios.delete('http://127.0.0.1:3000/users/deleteprofile', { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
+    setBoolean(!boolean)
+  }
+
   return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+    <form className="tableDesign container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
 
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">{decodedToken.name}, esta es tu area de administrador.</h1>
-          <Button className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Informacion de usuarios"} />
-          {/* <Button
-            text={"Modifica tus datos"}
-            onClick={() => navigate("/profileModify")}
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"}
-          />
-          <Button
-            text={"Elimina tu cuenta"}
-            onClick={() => navigate("/profileDestroy")}
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"}
-          />                
-          <Button
-            onClick={() => logout()}
-            className={"fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"} text={"Deslogeate"} /> */}
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                users?.map((user, index) => {
+                  return (
+
+                    <tr key={user.id_user} className="text-center">
+                      <td>{user.id_user}</td>
+                      <td>{user.name}</td>
+                      <td>{user.surname}</td>
+                      <td>{user.email}</td>
+                      <td><Button id={index} onClick={(e) => handlerDelete(e) } variant="danger">X</Button></td>
+
+                    </tr>
+                  )
+                }
+                )
+              }
+            </tbody>
+          </Table>
         </div>
       </div>
     </form>
   );
 }
 
-export default Profile;
+export default ProfileAdmin;
 
 
