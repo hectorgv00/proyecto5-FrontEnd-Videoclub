@@ -1,4 +1,4 @@
-import "./Content.css";
+import "./Contento.css";
 import { ContentGrid } from "../ContentGrid/ContentGrid";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useQuery } from "../../hooks/useQuery";
