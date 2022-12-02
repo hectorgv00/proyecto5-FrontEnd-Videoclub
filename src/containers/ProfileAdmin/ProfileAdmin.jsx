@@ -44,7 +44,7 @@ function ProfileAdmin() {
     let buttonId = e.target.id
     let email = users[(buttonId)].email
     console.log(users[buttonId].email)
-    let resp = await axios.delete(`${API}users/deleteprofile`, { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
+    let resp = await axios.delete(`${API}/users/deleteprofile`, { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
     setBoolean(!boolean)
   }
 

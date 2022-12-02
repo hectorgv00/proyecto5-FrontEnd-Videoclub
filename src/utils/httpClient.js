@@ -2,7 +2,7 @@ import axios from "axios";
 import { Await } from "react-router-dom";
 
 // const jwt = localStorage.getItem("jwt");
-export const API = "https://backend-videoclub-modify-production.up.railway.app";
+export const API = "https://backend-videoclub-modify-production.up.railway.app/";
 
 
 export function httpGet(path, jwt) {
@@ -63,7 +63,7 @@ export function getMyLoansMovies(jwt) {
 }
 
 export function getMyLoansSeries(jwt) {
-    return fetch(`${API}loans/myloans/series`, {
+    return fetch(`${API}/loans/myloans/series`, {
         headers: {
             Authorization:
                 "Bearer " + jwt,

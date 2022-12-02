@@ -3,13 +3,13 @@ import { Input } from "antd";
 import { errorCheck } from "../../services/useful";
 import "./Register.css";
 import Button from "../../components/Button/Button";
-// import {registerUser} from  "../../services/apicalls";
+// import {registerUser} from  "../../services/calls";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
-import { API } from "../../utils/httpClient";
+import {  } from "../../utils/httpClient";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ function Register(props) {
   };
 
   const registerUser = async (body) => {
-    let resp = await axios.post(`${API}users/register`, body);
+    let resp = await axios.post(`${API}/users/register`, body);
     if (
       resp.data ===
       `The user with email: ${body.email} has been created successfully`
@@ -140,7 +140,7 @@ function Register(props) {
   // Login Automático al registrarte
 
   const userLogin = async (bodyLogin) => {
-    let resp = await axios.post(`${API}users/login`, bodyLogin);
+    let resp = await axios.post(`${API}/users/login`, bodyLogin);
 
     let jwt = resp.data.jwt;
     let credentials = {

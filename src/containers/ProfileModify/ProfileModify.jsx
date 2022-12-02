@@ -81,7 +81,7 @@ function ProfileModify() {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.put(`${API}users/modify`, body, config);
+    let resp = await axios.put(`${API}/users/modify`, body, config);
 
     if(resp.data.message === "Data modified successfully"){
     let  jwt = resp.data.jwt;

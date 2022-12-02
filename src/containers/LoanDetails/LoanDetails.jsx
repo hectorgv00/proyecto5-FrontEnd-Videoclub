@@ -32,7 +32,7 @@ export const LoanDetails = () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.patch(`${API}loans/myloans/return`, body, config);
+    let resp = await axios.patch(`${API}/loans/myloans/return`, body, config);
     navigate("/profileloans")
   }
 

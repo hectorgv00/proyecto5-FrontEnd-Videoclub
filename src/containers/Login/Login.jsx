@@ -16,7 +16,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const userLogin = async (body) => {
-    let resp = await axios.post(`${API}users/login`, body);
+    let resp = await axios.post(`${API}/users/login`, body);
     if (resp.data === "Password or email is incorrect") {
       setUserError((prevState) => ({
         ...prevState,

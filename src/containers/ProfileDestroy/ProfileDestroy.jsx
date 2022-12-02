@@ -63,7 +63,7 @@ function ProfileDestroy() {
 
   const userDestroyed = async () => {
 
-    await axios.delete(`${API}users/delete`, { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
+    await axios.delete(`${API}/users/delete`, { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
 
   };
 
