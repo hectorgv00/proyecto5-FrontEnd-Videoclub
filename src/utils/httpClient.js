@@ -2,7 +2,7 @@ import axios from "axios";
 import { Await } from "react-router-dom";
 
 // const jwt = localStorage.getItem("jwt");
-const API = "http://127.0.0.1:3000";
+export const API = "https://backend-videoclub-modify-production.up.railway.app/";
 
 
 export function httpGet(path, jwt) {
@@ -29,7 +29,7 @@ export function httpGetSeries(path, jwt) {
 
 
 export const getUsersAdmin = async (jwt) => {
-    let data = await axios.get('http://127.0.0.1:3000/users/all', {
+    let data = await axios.get( `${API}/users/all`, {
         headers: {
             "Authorization":
                 "Bearer " + jwt
@@ -40,7 +40,7 @@ export const getUsersAdmin = async (jwt) => {
     return data
 }
 export function getLoansAdmin(jwt) {
-    return fetch('http://127.0.0.1:3000/loans/allloans', {
+    return fetch(`${API}loans/allloans`, {
         headers: {
             "Authorization":
                 "Bearer " + jwt
@@ -52,7 +52,7 @@ export function getLoansAdmin(jwt) {
 
 
 export function getMyLoansMovies(jwt) {
-    return fetch('http://127.0.0.1:3000/loans/myloans/movies', {
+    return fetch(`${API}loans/myloans/movies`, {
         headers: {
             Authorization:
                 "Bearer " + jwt
@@ -63,7 +63,7 @@ export function getMyLoansMovies(jwt) {
 }
 
 export function getMyLoansSeries(jwt) {
-    return fetch('http://127.0.0.1:3000/loans/myloans/series', {
+    return fetch(`${API}/loans/myloans/series`, {
         headers: {
             Authorization:
                 "Bearer " + jwt,

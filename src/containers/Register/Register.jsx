@@ -9,6 +9,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
+import { API } from "../../utils/httpClient";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ function Register(props) {
   };
 
   const registerUser = async (body) => {
-    let resp = await axios.post("http://127.0.0.1:3000/users/register", body);
+    let resp = await axios.post(`${API}/users/register`, body);
     if (
       resp.data ===
       `The user with email: ${body.email} has been created successfully`
@@ -139,7 +140,7 @@ function Register(props) {
   // Login Automático al registrarte
 
   const userLogin = async (bodyLogin) => {
-    let resp = await axios.post("http://127.0.0.1:3000/users/login", bodyLogin);
+    let resp = await axios.post(`${API}/users/login`, bodyLogin);
 
     let jwt = resp.data.jwt;
     let credentials = {

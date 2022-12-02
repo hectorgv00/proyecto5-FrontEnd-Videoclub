@@ -8,6 +8,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
+import { API } from "../../utils/httpClient";
 
 function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const userLogin = async (body) => {
-    let resp = await axios.post("http://127.0.0.1:3000/users/login", body);
+    let resp = await axios.post(`${API}/users/login`, body);
     if (resp.data === "Password or email is incorrect") {
       setUserError((prevState) => ({
         ...prevState,

@@ -4,6 +4,7 @@ import { useJwt } from "react-jwt";
 import { Input } from 'antd';
 import { errorCheck } from '../../services/useful';
 import { useNavigate } from "react-router-dom";
+import { API } from "../../utils/httpClient";
 
 import Button from "../../components/Button/Button";
 
@@ -80,7 +81,7 @@ function ProfileModify() {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.put("http://127.0.0.1:3000/users/modify", body, config);
+    let resp = await axios.put(`${API}/users/modify`, body, config);
 
     if(resp.data.message === "Data modified successfully"){
     let  jwt = resp.data.jwt;

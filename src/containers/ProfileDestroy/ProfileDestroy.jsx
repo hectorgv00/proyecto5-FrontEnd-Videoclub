@@ -8,6 +8,7 @@ import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import "./ProfileDestroy.css";
+import { API } from "../../utils/httpClient";
 
 function ProfileDestroy() {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ function ProfileDestroy() {
 
   const userDestroyed = async () => {
 
-    await axios.delete("http://127.0.0.1:3000/users/delete", { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
+    await axios.delete(`${API}/users/delete`, { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
 
   };
 

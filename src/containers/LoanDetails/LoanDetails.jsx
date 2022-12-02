@@ -6,6 +6,7 @@ import { Spinner } from "../../components/Spinner/Spinner";
 import Button from '../../components/Button/Button';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../utils/httpClient";
 
 export const LoanDetails = () => {
   const { content } = useSelector(contentData);
@@ -31,7 +32,7 @@ export const LoanDetails = () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let resp = await axios.patch("http://127.0.0.1:3000/loans/myloans/return", body, config);
+    let resp = await axios.patch(`${API}loans/myloans/return`, body, config);
     navigate("/profileloans")
   }
 
