@@ -14,7 +14,11 @@ export const ProfileLoans = () => {
 
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
-
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      navigate("/");
+    };
+  });
   useEffect(() => {
     // setIsLoading(true)
     getMyLoansMovies(jwt).then((data) => setMovies(data));

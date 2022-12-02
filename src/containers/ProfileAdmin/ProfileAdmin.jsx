@@ -22,9 +22,15 @@ function ProfileAdmin() {
   const navigate = useNavigate();
   const localStorageToken = localStorage.getItem("jwt");
   let { decodedToken } = useJwt(localStorageToken);
+
   if (decodedToken === null) {
     decodedToken = { name: "" };
-  }
+  } 
+  useEffect(() => {
+    if ((localStorage.getItem("jwt") === null) || (decodedToken.rolIdRol === 2)) {
+      navigate("/");
+    };
+  });
   useEffect(() => {
     getUsers()
 
@@ -32,18 +38,15 @@ function ProfileAdmin() {
 
   const getUsers = async () => {
     let { data } = await getUsersAdmin(localStorageToken)
-    console.log(data)
     setUsers(data)
   }
 
-  console.log(users)
   if (users.length === 0) return <Spinner />
 
   const handlerDelete = async (e) => {
     let buttonId = e.target.id
     let email = users[(buttonId)].email
-    console.log(users[buttonId].email)
-    let resp = await axios.delete('http://127.0.0.1:3000/users/deleteprofile', { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
+    let resp = await axios.delete('http://127.0.0.1:3000/users/deleteprofile', { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } })
     setBoolean(!boolean)
   }
 
@@ -73,7 +76,7 @@ function ProfileAdmin() {
                       <td>{user.name}</td>
                       <td>{user.surname}</td>
                       <td>{user.email}</td>
-                      <td><Button id={index} onClick={(e) => handlerDelete(e) } variant="danger">X</Button></td>
+                      <td><Button id={index} onClick={(e) => handlerDelete(e)} variant="danger">X</Button></td>
 
                     </tr>
                   )

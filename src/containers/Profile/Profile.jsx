@@ -4,6 +4,8 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { userout } from "../../slices/userSlice";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 
 function Profile() {
   const dispatch = useDispatch();
@@ -22,7 +24,11 @@ function Profile() {
     localStorage.removeItem("jwt");
     return navigate("/");
   };
-
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      navigate("/");
+    };
+  });
   return (
     <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
       <div className="row">

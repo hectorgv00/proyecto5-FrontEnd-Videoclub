@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
@@ -83,7 +83,11 @@ function ProfileDestroy() {
       [field + "Error"]: error,
     }));
   };
-
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      navigate("/");
+    };
+  });
   return (
     <form
       onSubmit={(e) => destroyUser(e)}
