@@ -29,6 +29,27 @@ export const ContentGrid = ({ search, title, type }) => {
         setIsLoading(false);
       });
     } else {
+      if (movies.length === 0) {
+        httpGet(type, "genre", search)
+          .then((data) => setMovies(data))
+          .finally(
+            setTimeout(() => {
+              setIsLoading(false);
+              setHasMore(false);
+            }, 1000)
+          );
+
+      if (movies.length === 0) {
+        httpGet(type, "actor", search)
+          .then((data) => setMovies(data))
+          .finally(
+            setTimeout(() => {
+              setIsLoading(false);
+              setHasMore(false);
+            }, 1000)
+          );
+      }
+      
       httpGet(type, target, search)
         .then((data) => setMovies(data))
         .finally(
@@ -38,7 +59,7 @@ export const ContentGrid = ({ search, title, type }) => {
           }, 1000)
         );
     }
-  }, [type, target, search, page]);
+  }}, [type, target, search, page]);
 
   if (isLoading) <Spinner />;
 
