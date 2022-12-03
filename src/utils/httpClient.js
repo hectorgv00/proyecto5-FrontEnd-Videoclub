@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const jwt = localStorage.getItem("jwt");
-const API = "http://127.0.0.1:3000";
+export const API = "http://127.0.0.1:3000";
 
 // const jwt = localStorage.getItem("jwt");
 // export const API = "https://backend-videoclub-modify-production.up.railway.app";
