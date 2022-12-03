@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { userData } from "../../slices/userSlice";
 import { contentData } from "../../slices/contentSlice";
 import axios from "axios";
+import { API } from "../../utils/httpClient";
 
 
 export const ContentDetails = () => {
@@ -63,7 +64,7 @@ export const ContentDetails = () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
-    let respGet = await axios.get("http://127.0.0.1:3000/loans/myloans",config)
+    let respGet = await axios.get(`${API}/loans/myloans`,config)
     
     const arrayResponse = respGet.data;
     
@@ -74,7 +75,7 @@ export const ContentDetails = () => {
     }else{
       setError("");
       console.log(body)
-      let respLoan = await axios.post("http://127.0.0.1:3000/loans/newloan",body, config);
+      let respLoan = await axios.post(`${API}/loans/newloan`,body, config);
       console.log(respLoan);
     navigate("/profileloans")
   }
