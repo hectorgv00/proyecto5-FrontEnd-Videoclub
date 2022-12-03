@@ -44,7 +44,7 @@ export const ProfileLoans = () => {
             text={"Series"}
             onClick={() => navigate("/series")}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
+              "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
             }
           />
         </div>
@@ -96,7 +96,7 @@ export const ProfileLoans = () => {
                 text={"Series"}
                 onClick={() => navigate("/series")}
                 className={
-                  "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
+                  "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
                 }
               />
             </div>
