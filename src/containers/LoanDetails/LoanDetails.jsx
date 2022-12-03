@@ -6,6 +6,7 @@ import { Spinner } from "../../components/Spinner/Spinner";
 import Button from "../../components/Button/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../utils/httpClient";
 
 export const LoanDetails = () => {
   const { content } = useSelector(contentData);
@@ -27,6 +28,7 @@ export const LoanDetails = () => {
 
   const returnContent = async () => {
     let config = {
+
       headers: { Authorization: "Bearer " + localStorageToken },
     };
     await axios.patch(
@@ -36,6 +38,7 @@ export const LoanDetails = () => {
     );
     navigate("/profileloans");
   };
+
 
   useEffect(() => {
     setIsLoading(true);

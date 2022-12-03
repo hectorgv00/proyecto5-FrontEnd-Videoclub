@@ -6,6 +6,7 @@ import Table from "react-bootstrap/Table";
 import { Spinner } from "../../components/Spinner/Spinner";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { API } from "../../utils/httpClient";
 
 function ProfileAdmin() {
   const [boolean, setBoolean] = useState(true);
@@ -31,15 +32,14 @@ function ProfileAdmin() {
   if (users.length === 0) return <Spinner />;
 
   const handlerDelete = async (e) => {
-    let buttonId = e.target.id;
-    let email = users[buttonId].email;
-    console.log(users[buttonId].email);
-    await axios.delete("http://127.0.0.1:3000/users/deleteprofile", {
-      data: { email: email },
-      headers: { Authorization: "Bearer " + localStorageToken },
-    });
-    setBoolean(!boolean);
-  };
+
+    let buttonId = e.target.id
+    let email = users[(buttonId)].email
+    console.log(users[buttonId].email)
+    await axios.delete(`${API}/users/deleteprofile`, { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
+    setBoolean(!boolean)
+  }
+
 
   return (
     <form className="tableDesign container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
