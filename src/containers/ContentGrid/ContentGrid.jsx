@@ -23,15 +23,21 @@ export const ContentGrid = ({ search, title, type }) => {
     setIsLoading(true);
 
     if (!search) {
-      httpGet(type, "page", page)
-        .then((data) => setMovies(data))
-        .finally(setTimeout(() => setIsLoading(false), 1000));
+      httpGet(type, "page", page).then((data) => {
+        setMovies((prevMovies) => prevMovies.concat(data));
+        setHasMore(page < 5 || page < 4);
+        setIsLoading(false);
+      });
     } else {
       httpGet(type, target, search)
         .then((data) => setMovies(data))
-        .finally(setTimeout(() => setIsLoading(false), 1000));
+        .finally(
+          setTimeout(() => {
+            setIsLoading(false);
+            setHasMore(false);
+          }, 1000)
+        );
     }
-
   }, [type, target, search, page]);
 
   if (isLoading) <Spinner />;
@@ -39,7 +45,7 @@ export const ContentGrid = ({ search, title, type }) => {
   if (!isLoading && movies.length === 0)
     return (
       <div className="noResults mt-5 pt-5">
-         <h1
+        <h1
           onClick={() => navigate("/content")}
           className="contentHeader text-light"
         >

@@ -3,24 +3,14 @@ import axios from "axios";
 const jwt = localStorage.getItem("jwt");
 const API = "http://127.0.0.1:3000";
 
-
 export const httpGet = async (content, target, criteria) => {
     try {
         let res = await axios.get(`${API}/${content}/${target}/${criteria}`, {headers: {"Authorization": "Bearer " + jwt}})
-        // console.log(res)
-        // console.log(res.data)
         return res.data;
     } catch (error) {
         console.error(error);
     }
 };
-
-// httpGet("movies", "title", "black");
-// httpGet("series", "genre", "fantasy");
-
-////////////////////////////////////////////
-// admin requests
-// TODO: refactor to simple function 
 
 export const getUsersAdmin = async (jwt) => {
     let data = await axios.get('http://127.0.0.1:3000/users/all', {
