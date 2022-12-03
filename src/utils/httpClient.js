@@ -52,7 +52,7 @@ export function getLoansAdmin(jwt) {
 
 
 export function getMyLoansMovies(jwt) {
-    return fetch(`${API}loans/myloans/movies`, {
+    return fetch(`${API}/loans/myloans/movies`, {
         headers: {
             Authorization:
                 "Bearer " + jwt
