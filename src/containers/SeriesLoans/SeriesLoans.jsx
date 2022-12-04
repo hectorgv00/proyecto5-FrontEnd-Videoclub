@@ -9,7 +9,7 @@ export const SeriesLoans = ({ series }) => {
 
   return (
     <div className="contentRented">
-            <h1>Series</h1>
+            <h1 className='seriesHeader'>Series</h1>
             {series.length > 0 ? (
               <ul className="contentGrid">
                 {series?.map((serie) => (

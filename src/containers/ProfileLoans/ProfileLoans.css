@@ -37,6 +37,11 @@
   background-color: azure;
 }
 
+.headerRentals {
+  text-shadow: .1rem .1rem .1rem #777;
+  font-style: italic;
+}
+
 @media (max-width: 560px) {
   .contentImage {
     width: 90%;

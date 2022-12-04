@@ -9,7 +9,7 @@ export const MoviesLoans = ({ movies }) => {
 
   return (
     <div className="contentRented">
-      <h1>Movies</h1>
+      <h1 className="moviesHeader">Movies</h1>
 
       {movies.length > 0 ? (
         <ul className="contentGrid">

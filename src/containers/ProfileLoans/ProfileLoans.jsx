@@ -30,8 +30,8 @@ export const ProfileLoans = () => {
     return <NoLoans />;
   } else {
     return (
-      <div className="profileLoansDesign">
-        <h1 className="text-center">Current Rentals</h1>
+      <div className="container-fluid profileLoansDesign">
+        <h1 className="text-center headerRentals">Current Rentals</h1>
 
         <div className="wrap">
           <MoviesLoans movies={movies} />
