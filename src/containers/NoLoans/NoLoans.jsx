@@ -1,13 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 import "./NoLoans.css";
 
-
 export const NoLoans = () => {
-
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   return (
     <div className="noLoansYet text-center">
@@ -25,7 +22,7 @@ export const NoLoans = () => {
           text={"Series"}
           onClick={() => navigate("/series")}
           className={
-            "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
+            "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
           }
         />
       </div>

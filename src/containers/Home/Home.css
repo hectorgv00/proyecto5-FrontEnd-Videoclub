@@ -11,3 +11,9 @@
     text-shadow: 0 0 15px #f6019d;
 
 }
+
+.bgImage{
+    background-position: 0% 12%;
+    background-image: url(../../images/fondoNavbar.jpg);
+
+}

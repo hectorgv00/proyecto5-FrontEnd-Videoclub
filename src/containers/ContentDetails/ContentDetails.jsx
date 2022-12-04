@@ -10,80 +10,74 @@ import { contentData } from "../../slices/contentSlice";
 import axios from "axios";
 import { API } from "../../utils/httpClient";
 
-
 export const ContentDetails = () => {
   const userReduxCredentials = useSelector(userData);
-  const contentType = useSelector(contentData)
+  const contentType = useSelector(contentData);
 
-  // console.log(contentType)
-
-  const localStorageToken = localStorage.getItem("jwt")
+  const localStorageToken = localStorage.getItem("jwt");
 
   const { contentId } = useParams();
 
-  // console.log(contentId);
-
   const [isLoading, setIsLoading] = useState(true);
-
   const [movie, setMovie] = useState(null);
-
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
+  console.log(contentId);
+
   useEffect(() => {
     setIsLoading(true);
+    httpGet(contentType.content, "id", contentId)
+      .then((data) => setMovie(data))
+      .finally(setIsLoading(false));
+  }, [contentId, contentType.content]);
 
-    httpGet(`/${contentType.content}/id/` + contentId).then((data) => {
-
-      // console.log(data);
-
-      setIsLoading(false);
-      
-      setMovie(data);
-      
-    });
-  }, [contentId]);
-
-  if (isLoading) return (
-  <div className="container-fluid vh-100 bg-black d-flex justify-content-center align-items-center">
-  <Spinner />
-  </div>);
+  if (isLoading)
+    return (
+      <div className="container-fluid vh-100 bg-black d-flex justify-content-center align-items-center">
+        <Spinner />
+      </div>
+    );
 
   if (!movie) return null;
 
   // Body to add loan
 
-// console.log(movie[0].articleIdArticles)
+  // console.log(movie[0].articleIdArticles)
 
   let body = {
-    article: movie[0].articleIdArticles
-   }
+    article: movie[0].articleIdArticles,
+  };
 
-  const addLoan = async() =>{
+  const addLoan = async () => {
     let config = {
       headers: { Authorization: "Bearer " + localStorageToken }
     }
     let respGet = await axios.get(`${API}/loans/myloans`,config)
     
     const arrayResponse = respGet.data;
-    
-    const filteredArray = arrayResponse.filter((loan)=> loan.articleIdArticles === movie[0].articleIdArticles && loan.returned === false);
-    
-    if(filteredArray.length > 0 ){
+
+    const filteredArray = arrayResponse.filter(
+      (loan) =>
+        loan.articleIdArticles === movie[0].articleIdArticles &&
+        loan.returned === false
+    );
+
+    if (filteredArray.length > 0) {
       setError("This film is already in your loans");
-    }else{
+    } else {
       setError("");
-      console.log(body)
-      let respLoan = await axios.post(`${API}/loans/newloan`,body, config);
+      console.log(body);
+      let respLoan = await axios.post(
+        `${API}/loans/newloan`,
+        body,
+        config
+      );
       console.log(respLoan);
-    navigate("/profileloans")
-  }
-
-
-
-
-  }
+      navigate("/profileloans");
+    }
+  };
 
   if (
     userReduxCredentials?.credentials?.token !== undefined ||
@@ -108,8 +102,7 @@ export const ContentDetails = () => {
               }
               onClick={addLoan}
             />
-          <div className="errorInput mb-3 ft-5"> {error} </div>
-
+            <div className="errorInput mb-3 ft-5"> {error} </div>
           </div>
         </div>
       </div>
