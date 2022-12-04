@@ -6,7 +6,6 @@
 }
 
 
-
 .contentGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 230px);
@@ -19,6 +18,30 @@
 .noOverflow{
   overflow: hidden; /* Hide scrollbars */
 
+}
+
+.extraTargetsButtons {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.extraTargetsButtons > button {
+  margin: .2em;
+  padding: .2em;
+  border-radius: .2em;
+  font-size: 14px;
+
+}
+
+
+.extraTargetsButtons > button:hover {
+  opacity: 0.8;
+}
+
+.noResults {
+  margin-top: 10vh;
+  background-color: black;
 }
 
 @media (max-width: 560px) {
