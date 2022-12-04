@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://github.com/hectorgv00/proyecto5-FrontEnd-Videoclub" rel="noopener">
+ <img width=250px height=230px src="./public/directLogo.jpeg" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Proyecto-05-Videoclub-Frontend</h3>
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align="center"> We will create the frontend of a movie rental application, using the database created in the previous project.
+    <br>
+</p>
+ ![Home](https://user-images.githubusercontent.com/109986640/205515838-47ac6efc-d176-4395-ac8e-fa08877267a6.png)
 
-### `npm test`
+## 📝 Index of content...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-### `npm run build`
+## 🧐 About <a name = "about"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The user of our application must be able to register, login/logout, access their client area and process their rentals. 
+<br> 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Login](https://user-images.githubusercontent.com/109986640/205515842-04a0404a-8b70-4503-8bd7-431f340bb140.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All this, visually from the browser.
+<br>
+The user can also do a search in our database, either for movies or series, by their title or by actors who participate in it.
+<br>
+In addition to being able to rent and return movies, the user will be able to access all the information about their ongoing rental.
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-### `npm run eject`
+To start, we will clone the repository (https://github.com/hectorgv00/proyecto5-FrontEnd-Videoclub) from GitHub,
+with the gitbash console or in VSC.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once cloned, we will install all the dependencies of our project with command in console:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm i
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will create a folder called "node_modules" which will contain everything necessary to make our application work.
 
-## Learn More
+## Initializing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The package.json contains a script called "start" which we will call to launch our react project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run start
+```
 
-### Code Splitting
+## 🎈 Usage <a name="usage"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We can perform all the functions mentioned above: register, login/logout, search for movies or series, rent movies or series and access our user area.
+<br>
 
-### Analyzing the Bundle Size
+![Profile](https://user-images.githubusercontent.com/109986640/205515846-cfb10363-acc7-4c10-ad95-0e054b64fa19.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+As administrators, we will also be able to remove users from our database and see all active rentals.
 
-### Making a Progressive Web App
+![Admin](https://user-images.githubusercontent.com/109986640/205515837-0cccdd52-c856-419e-a3b8-f42a661eafeb.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🚀 Deployment <a name = "deployment"></a>
 
-### Advanced Configuration
+Deployed in AWS:
+https://deploy.d33ck4kzol9rq3.amplifyapp.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## ⛏️ Built Using <a name = "built_using"></a>
 
-### Deployment
+- [antd](https://ant.design/) - Design.
+- [aws](https://aws.amazon.com/es/) - APP web.
+- [axios](https://axios-http.com) - Library.
+- [bootstrap](https://react-bootstrap.github.io/) - Design.
+- [react](https://reactjs.org/) - JS Library.
+- [react-redux](https://react-redux.js.org/) - Build user interface.
+- [react-router-dom](https://reactrouter.com/) - Dynamic routing.
+- [jsonwebtoken](https://jwt.io/) - Claims securely.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## ✍️ Authors <a name = "authors"></a>
 
-### `npm run build` fails to minify
+- [@Fernando Valdivielso](https://github.com/valdidev) - Idea & Initial work
+- [@Hector Gonzalez Viejo](https://github.com/hectorgv00) - Idea & Initial work
+- [@Diego Waisrub Piñeyro](https://github.com/Di3LuX) - Idea & Initial work
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+
+
