@@ -1,14 +1,12 @@
 .navbarDesign{
     height: 10vh;
-    background-color: #000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* border-bottom: 1px rgb(22, 22, 22) solid; */
-}
+    background-image: url(../../../public/946521.jpg);    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-position: 50% 62%;
+  }
 
 .logo {
 height: 4em;
 width: 5em;
-
 }
 
 .listDesign{
@@ -47,7 +45,7 @@ width: 5em;
 
 .direct{
     animation: colorChange 10s infinite alternate;
-    color: #9700cc;
+    color: violet;
 }
 
 @keyframes colorChange {

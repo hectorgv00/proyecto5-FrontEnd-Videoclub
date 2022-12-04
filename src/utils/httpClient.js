@@ -40,9 +40,9 @@ export const getUsersAdmin = async (jwt) => {
     return data
 }
 export function getLoansAdmin(jwt) {
-    return fetch('http://127.0.0.1:3000/loans/allloans', {
+    return fetch('http://127.0.0.1:3000/allloans/', {
         headers: {
-            "Authorization":
+            Authorization:
                 "Bearer " + jwt
         },
     })

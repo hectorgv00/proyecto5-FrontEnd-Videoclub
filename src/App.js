@@ -10,6 +10,8 @@ import { ContentDetails } from './containers/ContentDetails/ContentDetails';
 import Profile from "./containers/Profile/Profile";
 import ProfileModify from "./containers/ProfileModify/ProfileModify";
 import ProfileDestroy from "./containers/ProfileDestroy/ProfileDestroy";
+import ProfileAdminUsers from "./containers/ProfileAdminUsers/ProfileAdminUsers";
+import ProfileAdminLoans from "./containers/ProfileAdminLoans/ProfileAdminLoans";
 import ProfileAdmin from "./containers/ProfileAdmin/ProfileAdmin";
 import { ProfileLoans } from "./containers/ProfileLoans/ProfileLoans";
 import { LoanDetails } from "./containers/LoanDetails/LoanDetails";
@@ -29,6 +31,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/profileadmin" element={<ProfileAdmin/>}/>
+          <Route path="/profileadminloans" element={<ProfileAdminLoans/>}/>
+          <Route path="/profileadminusers" element={<ProfileAdminUsers/>}/>
           <Route path="/profiledestroy" element={<ProfileDestroy/>}/>
           <Route path="/profileloans" element={<ProfileLoans />} />
           <Route path="/profileloans/details" element={ <LoanDetails />} />
