@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
 import { API } from "../../utils/httpClient";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -166,7 +167,7 @@ function Register(props) {
   return (
     <form
       onSubmit={sendBody}
-      className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0"
+      className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center margin-top-10vh"
     >
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
@@ -179,7 +180,7 @@ function Register(props) {
           {/* Spinner para cuando carga */}
           {isLoading ? <Spinner className="purple" /> : ""}
 
-          <div className="errorInput mb-3 ft-5">
+          <div className="errorInput mb-0 ft-5">
             {" "}
             {userError.nocompletedError}{" "}
           </div>
@@ -266,11 +267,12 @@ function Register(props) {
 
           <div className="errorInput mb-3"> {userError.password2Error} </div>
 
-          <Button
+          <CyberButton
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "CyberButtonColor d-flex align-items-center "
             }
-            text={"Regístrate"}
+            text={"Register"}
+            onClick={sendBody}
           />
         </div>
       </div>

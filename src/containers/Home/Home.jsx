@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Button from "../../components/Button/Button";
 import { useJwt } from "react-jwt";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Home(props) {
   const navigate = useNavigate();
@@ -12,8 +13,6 @@ function Home(props) {
   if (decodedToken === null) {
     decodedToken = "";
   }
-
-  console.log(decodedToken);
 
   let welcomeGuest = (
     <p className="fs-3 welcome">
@@ -40,28 +39,39 @@ function Home(props) {
           </div>
           <div className="row justify-content-center">
             <div className="col col-lg-8  text-light d-flex align-items-center justify-content-center flex-column ">
-              {(decodedToken) ? welcomeMember : welcomeGuest}
+              {decodedToken ? welcomeMember : welcomeGuest}
             </div>
           </div>
           <div className="row">
             <div className="col d-flex justify-content-center">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col col-lg-6 d-flex justify-content-center">
-                    <Button
+                  <div className="col col-lg-6 d-flex justify-content-around">
+                    <CyberButton
+                      text={"Series"}
+                      onClick={() => navigate("/series")}
+                      className={"CyberButtonColor d-flex align-items-center justify-content-center"}
+                    />
+                    <CyberButton
+                      text={"Movies"}
+                      onClick={() => navigate("/movies")}
+                      className={"d-flex align-items-center justify-content-center"}
+                    />
+
+                    {/* <Button
                       text={"Series"}
                       onClick={() => navigate("/series")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
                       }
-                    />
-                    <Button
+                    /> */}
+                    {/* <Button
                       text={"Movies"}
                       onClick={() => navigate("/movies")}
                       className={
                         "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
                       }
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>

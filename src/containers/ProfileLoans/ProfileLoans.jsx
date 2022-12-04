@@ -24,7 +24,11 @@ export const ProfileLoans = () => {
     setIsLoading(false);
   },1000)
 
-  if (isLoading) return <Spinner />
+  if (isLoading) {    return (
+    <div className="container-fluid vh-100 bg-black d-flex justify-content-center align-items-center">
+      <Spinner />
+    </div>
+  )}
 
   if (isLoading === false && movies.length === 0 && series.length === 0) {
     return <NoLoans />;
@@ -33,7 +37,7 @@ export const ProfileLoans = () => {
       <div className="container-fluid profileLoansDesign">
         <h1 className="text-center headerRentals">Current Rentals</h1>
 
-        <div className="wrap">
+        <div className="wrap text-center">
           <MoviesLoans movies={movies} />
 
           <br />

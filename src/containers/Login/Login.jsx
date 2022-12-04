@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
 import { API } from "../../utils/httpClient";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Login() {
   const navigate = useNavigate();
@@ -156,11 +157,12 @@ function Login() {
 
             <div className="errorInput mb-3"> {userError.passwordError} </div>
             <div className="boton mt-5">
-              <Button
-                text={"Login!"}
+              <CyberButton
+                text={"Login"}
                 className={
-                  "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center "
+                  "d-flex align-items-center "
                 }
+                onClick={(e) => submitLogin(e)}
               />
             </div>
             <h3 className="text-light text-center mb-5 mt-5">

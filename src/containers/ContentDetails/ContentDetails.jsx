@@ -3,12 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./ContentDetails.css";
 import { httpGet } from "../../utils/httpClient";
 import { Spinner } from "../../components/Spinner/Spinner";
-import Button from "../../components/Button/Button";
+// import CyberButton from "../../components/Button/Button";
 import { useSelector } from "react-redux";
 import { userData } from "../../slices/userSlice";
 import { contentData } from "../../slices/contentSlice";
 import axios from "axios";
 import { API } from "../../utils/httpClient";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 export const ContentDetails = () => {
   const userReduxCredentials = useSelector(userData);
@@ -95,10 +96,10 @@ export const ContentDetails = () => {
             <h1>{movie[0].title}</h1>
             <p className="mt-5 text-align-justify">{movie[0].summary}</p>
             <p>{movie[0].genre}</p>
-            <Button
+            <CyberButton
               text={"Order"}
               className={
-                "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
+                "d-flex align-items-center"
               }
               onClick={addLoan}
             />
@@ -124,13 +125,16 @@ export const ContentDetails = () => {
               If you want to watch this movie, please login through the
               following link
             </h3>
-            <Button
-              text={"Login"}
-              className={
-                "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
-              }
-              onClick={() => navigate("/login")}
+
+            <CyberButton
+            
+            text={"Login"}
+            className={
+              "d-flex align-items-center "
+            }
+            onClick={() => navigate("/login")}
             />
+
           </div>
         </div>
       </div>
