@@ -51,31 +51,19 @@ console.log(users)
   
 
   return (
-    <div>
-      <form className="tableDesign container-fluid bg-black vh-100 d-flex justify-content-center align-items-center ">
+    <div className="container-fluid bg-black d-flex justify-content-center align-items-center ">
         <div className="row">
           <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-            <h1 className="text-light mb-3">
-            </h1>
-            <Table striped bordered hover variant="dark">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Surname</th>
-                  <th>Email</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
                 {users?.map((user, index) => {
                   return (
-                    <tr key={user.id_user} className="text-center">
-                      <td>{user.id_user}</td>
-                      <td>{user.name}</td>
-                      <td>{user.surname}</td>
-                      <td>{user.email}</td>
-                      <td>
+                    <div key={user.id_user} className="text-center d-flex text-light justify-content-around">
+
+                      <p><span>id = </span>{user.id_user}</p>
+                      <p><span>name = </span>{user.name}</p>
+                      <p><span>surname = </span>{user.surname}</p>
+                      <p><span>email = </span>{user.email}</p>
+
+                      <p>
                         <Button
                           id={index}
                           onClick={(e) => handlerDelete(e)}
@@ -83,15 +71,12 @@ console.log(users)
                         >
                           X
                         </Button>
-                      </td>
-                    </tr>
+                      </p>
+                    </div>
                   );
                 })}
-              </tbody>
-            </Table>
           </div>
-        </div>
-      </form>
-    </div>
+         </div>
+     </div>
   );
 }
