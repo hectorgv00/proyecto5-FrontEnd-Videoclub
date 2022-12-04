@@ -13,8 +13,6 @@ export const LoanDetails = () => {
   const { content } = useSelector(contentData);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(content);
-
   let cleanDateOfReturn = content.date_of_return.split("T")[0];
 
   let cleanDateOfLoan = content.date_of_loan.split("T")[0];
