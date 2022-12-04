@@ -62,3 +62,11 @@ export function getMyLoansSeries(jwt) {
         .then((res) => res.json())
 }
 
+export const httpGetAdmin = async (content, target) => {
+    try {
+        let res = await axios.get(`${API}/${content}/${target}`, { headers: { "Authorization": "Bearer " + jwt } })
+        return res.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
