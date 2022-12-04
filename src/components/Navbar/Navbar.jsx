@@ -65,7 +65,7 @@ function Navbar(props) {
 
       <div className="navbarDesign container-fluid fixed-top">
         <div className=" row justify-content-around">
-          <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center mt-3 ps-0 ps-lg-3">
+          <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center ps-0 mt-0  ps-lg-3">
             <img src={logo} onClick={()=> navigate("/")} className="logo image-fluid cursor-pointer" alt="logo" />
           </div>
 
