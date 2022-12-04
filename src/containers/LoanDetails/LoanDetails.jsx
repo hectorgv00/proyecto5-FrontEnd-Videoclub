@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../utils/httpClient";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 export const LoanDetails = () => {
   const { content } = useSelector(contentData);
@@ -32,7 +33,7 @@ export const LoanDetails = () => {
       headers: { Authorization: "Bearer " + localStorageToken },
     };
     await axios.patch(
-      "http://127.0.0.1:3000/loans/myloans/return",
+      `${API}/loans/myloans/return`,
       body,
       config
     );
@@ -50,7 +51,7 @@ export const LoanDetails = () => {
 
   if (isLoading)
     return (
-      <div className="spinnerDesign">
+      <div className="container-fluid vh-100 bg-black d-flex justify-content-center align-items-center">
         <Spinner />
       </div>
     );
@@ -67,11 +68,11 @@ export const LoanDetails = () => {
           <h1>{content.title}</h1>
           <p>Date of loan: {cleanDateOfLoan}</p>
           <p>Until: {cleanDateOfReturn}</p>
-          <Button
+          <CyberButton
             text={"Return"}
             onClick={returnContent}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center mb-5 "
+              "CyberButtonColor d-flex align-items-center "
             }
           />
         </div>

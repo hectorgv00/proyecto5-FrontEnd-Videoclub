@@ -2,6 +2,7 @@ import { LoanCard } from '../LoanCard/LoanCard';
 import './SeriesLoans.css';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import CyberButton from '../../components/CyberButton/CyberButton';
 
 export const SeriesLoans = ({ series }) => {
 
@@ -17,15 +18,16 @@ export const SeriesLoans = ({ series }) => {
                 ))}
               </ul>
             ) : (
-              <div>
+              <div className='d-flex justify-content-center align-items-center flex-column'>
                 <p>You don't have series yet... check out our colecction</p>
-                <Button
+                {/* <Button
                   text={"Series"}
                   onClick={() => navigate("/series")}
                   className={
                     "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
                   }
-                />
+                /> */}
+                <CyberButton text={"Series"} onClick={()=>navigate("/series")}/>
               </div>
             )}
           </div>

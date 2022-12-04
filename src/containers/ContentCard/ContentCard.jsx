@@ -28,7 +28,7 @@ export const ContentCard = ({ movie, type }) => {
   }
 
   return (
-    <li onClick={() => handlerRedux()} className="contentCard text-light">
+    <li onClick={() => handlerRedux()} className="contentCard text-light ">
       <img
         width={230}
         height={345}

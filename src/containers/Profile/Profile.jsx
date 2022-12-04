@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { userout } from "../../slices/userSlice";
 import { useDispatch } from "react-redux";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -24,37 +25,35 @@ function Profile() {
   };
 
   return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
+    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0 bgImage">
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">
-            {decodedToken.name}'s area!
+            {(decodedToken.name).toUpperCase()}'S AREA
           </h1>
-          <Button
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
-            }
+          <CyberButton
+           className={"d-flex align-items-center "}
             text={"Current rentals"}
             onClick={() => navigate("/profileloans")}
           />
-          <Button
+          <CyberButton
             text={"Modify profile"}
             onClick={() => navigate("/profilemodify")}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "CyberButtonColor d-flex align-items-center "
             }
           />
-          <Button
+          <CyberButton
             text={"Delete account"}
             onClick={() => navigate("/profiledestroy")}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "d-flex align-items-center CyberButtonColorRed1"
             }
           />
-          <Button
+          <CyberButton
             onClick={() => logout()}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "d-flex align-items-center CyberButtonColorRed2"
             }
             text={"Log out"}
           />
