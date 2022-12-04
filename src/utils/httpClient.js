@@ -1,20 +1,19 @@
 import axios from "axios";
-import { Await } from "react-router-dom";
 
-// const jwt = localStorage.getItem("jwt");
+const jwt = localStorage.getItem("jwt");
 export const API = "https://backend-videoclub-modify-production.up.railway.app";
 
 
-export function httpGet(path, jwt) {
-    return fetch(API + path, {
-        headers: {
-            Authorization:
-                "Bearer " + jwt
-        },
-    })
+// export function httpGet(path, jwt) {
+//     return fetch(API + path, {
+//         headers: {
+//             Authorization:
+//                 "Bearer " + jwt
+//         },
+//     })
 
-        .then((res) => res.json())
-};
+//         .then((res) => res.json())
+// };
 
 export function httpGetSeries(path, jwt) {
     return fetch(API + path, {
@@ -39,17 +38,17 @@ export const getUsersAdmin = async (jwt) => {
     console.log(data)
     return data
 }
-export function getLoansAdmin(jwt) {
-    return fetch(`${API}/loans/allloans`, {
+export const getLoansAdmin = async (jwt) => {
+    let data = await axios.get( `${API}/loans/allloans`, {
         headers: {
             "Authorization":
                 "Bearer " + jwt
         },
+
     })
-
-        .then((res) => res.json())
+    console.log(data)
+    // return data
 }
-
 
 export function getMyLoansMovies(jwt) {
     return fetch(`${API}/loans/myloans/movies`, {
@@ -74,3 +73,22 @@ export function getMyLoansSeries(jwt) {
 
         .then((res) => res.json())
 }
+
+
+
+export const httpGet = async (content, target, criteria) => {
+    try {
+        let res = await axios.get(`${API}/${content}/${target}/${criteria}`, { headers: { "Authorization": "Bearer " + jwt } })
+        return res.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+export const httpGetAdmin = async (content, target) => {
+    try {
+        let res = await axios.get(`${API}/${content}/${target}`, { headers: { "Authorization": "Bearer " + jwt } })
+        return res.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
