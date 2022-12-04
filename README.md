@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/hectorgv00/proyecto5-FrontEnd-Videoclub" rel="noopener">
- <img width=250px height=230px src="./public/directLogo.jpeg" alt="Project logo"></a>
+ <img width=250px height=230px src="" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Proyecto-05-Videoclub-Frontend</h3>
@@ -17,7 +17,8 @@
 <p align="center"> We will create the frontend of a movie rental application, using the database created in the previous project.
     <br>
 </p>
- ![Home](https://user-images.githubusercontent.com/109986640/205515838-47ac6efc-d176-4395-ac8e-fa08877267a6.png)
+
+![Home](https://user-images.githubusercontent.com/109986640/205516047-d93f51a8-ecca-4465-bb22-2787ec90df39.png)
 
 ## 📝 Index of content...
 
@@ -34,11 +35,9 @@
 
 The user of our application must be able to register, login/logout, access their client area and process their rentals. 
 <br> 
-
-![Login](https://user-images.githubusercontent.com/109986640/205515842-04a0404a-8b70-4503-8bd7-431f340bb140.png)
-
 All this, visually from the browser.
 <br>
+![Login](https://user-images.githubusercontent.com/109986640/205515842-04a0404a-8b70-4503-8bd7-431f340bb140.png)
 The user can also do a search in our database, either for movies or series, by their title or by actors who participate in it.
 <br>
 In addition to being able to rent and return movies, the user will be able to access all the information about their ongoing rental.
@@ -99,6 +98,4 @@ https://deploy.d33ck4kzol9rq3.amplifyapp.com/
 - [@Diego Waisrub Piñeyro](https://github.com/Di3LuX) - Idea & Initial work
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-
 
