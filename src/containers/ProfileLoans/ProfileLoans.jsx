@@ -30,7 +30,7 @@ export const ProfileLoans = () => {
     </div>
   )}
 
-  if (isLoading === false && movies.length === 0 && series.length === 0) {
+  if (isLoading === false && movies?.length === 0 && series?.length === 0) {
     return <NoLoans />;
   } else {
     return (

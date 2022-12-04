@@ -30,8 +30,6 @@ export default function AdminUsers() {
     },[boolean])
   
 
-console.log(users)
-
     
   
     if (users?.length === 0) return <Spinner />
@@ -40,7 +38,6 @@ console.log(users)
     const handlerDelete = async (e) => {
       let buttonId = e.target.id
       let email = users[(buttonId)].email
-      console.log(users[buttonId].email)
       let resp = await axios.delete(`${API}/users/deleteprofile`, { data: { email: email }, headers: { "Authorization": "Bearer " + localStorageToken } } )
       setBoolean(!boolean)
     }

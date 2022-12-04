@@ -25,7 +25,6 @@ export const ContentDetails = () => {
 
   const navigate = useNavigate();
 
-  console.log(contentId);
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,8 +43,6 @@ export const ContentDetails = () => {
   if (!movie) return null;
 
   // Body to add loan
-
-  // console.log(movie[0].articleIdArticles)
 
   let body = {
     article: movie[0].articleIdArticles,
@@ -69,13 +66,11 @@ export const ContentDetails = () => {
       setError("This film is already in your loans");
     } else {
       setError("");
-      console.log(body);
       let respLoan = await axios.post(
         `${API}/loans/newloan`,
         body,
         config
       );
-      console.log(respLoan);
       navigate("/profileloans");
     }
   };

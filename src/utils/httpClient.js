@@ -21,7 +21,6 @@ export const getUsersAdmin = async (jwt) => {
         },
 
     })
-    console.log(data)
     return data
 }
 
@@ -34,7 +33,6 @@ export const getLoansAdmin = async (jwt) => {
 
 
     })
-    console.log(data)
     // return data
 }
 
