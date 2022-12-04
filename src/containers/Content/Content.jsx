@@ -11,6 +11,8 @@ export const Content = ({ title, type }) => {
 
 
   return (
+    
     <ContentGrid title={title} type={type} key={debouncedSearch} search={debouncedSearch} />
+    
   );
 };

@@ -28,24 +28,24 @@ function Profile() {
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">
-            Esta es tu area {decodedToken.name}!
+            {decodedToken.name}'s area!
           </h1>
           <Button
             className={
               "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
             }
-            text={"Ver alquileres vigentes"}
+            text={"Current rentals"}
             onClick={() => navigate("/profileloans")}
           />
           <Button
-            text={"Modifica tus datos"}
+            text={"Modify profile"}
             onClick={() => navigate("/profilemodify")}
             className={
               "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
             }
           />
           <Button
-            text={"Elimina tu cuenta"}
+            text={"Delete account"}
             onClick={() => navigate("/profiledestroy")}
             className={
               "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
@@ -56,7 +56,7 @@ function Profile() {
             className={
               "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
             }
-            text={"Deslogeate"}
+            text={"Log out"}
           />
         </div>
       </div>

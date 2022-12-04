@@ -22,11 +22,14 @@ function ProfileAdmin() {
     decodedToken = { name: "" };
   }
 
+
   if (localStorage.getItem("jwt") === null || decodedToken.rolIdRol === 2) {
     navigate("/");
   }
 
+
   return (
+
     <div className="profileAdminHeaderDesign text-center bg-black text-light">
       <header className="d-flex justify-content-center">
         <Button
