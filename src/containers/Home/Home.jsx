@@ -8,7 +8,7 @@ function Home(props) {
 
   return (
     <div>
-      <div className="container-fluid bg-black vh-100 d-flex flex-column align-items-center justify-content-around">
+      <div className="container-fluid bg-black vh-100 d-flex flex-column align-items-center justify-content-around bgImage">
         <div className="row mt-5 mt-lg-0">
           <div className="col-12 d-flex align-items-center justify-content-center">
             <h1 className="text-light mb-5">
