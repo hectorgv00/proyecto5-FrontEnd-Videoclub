@@ -1,6 +1,5 @@
 <p align="center">
   <a href="https://github.com/hectorgv00/proyecto5-FrontEnd-Videoclub" rel="noopener">
- <img width=250px height=230px src="" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Proyecto-05-Videoclub-Frontend</h3>
@@ -69,7 +68,7 @@ npm run start
 We can perform all the functions mentioned above: register, login/logout, search for movies or series, rent movies or series and access our user area.
 <br>
 
-![Profile](https://user-images.githubusercontent.com/109986640/205515846-cfb10363-acc7-4c10-ad95-0e054b64fa19.png)
+![Profile](https://user-images.githubusercontent.com/109986640/205527734-9091fcf5-58dd-46b7-b062-b91337e68c92.png)
 
 As administrators, we will also be able to remove users from our database and see all active rentals.
 
