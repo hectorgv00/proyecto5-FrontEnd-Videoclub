@@ -9,13 +9,13 @@ function CyberButton({ className, text, onClick }) {
       role="button"
 
     >
-      <a href="#" className="GlitchButtonWidth text-center">
+      <div  className="GlitchButtonWidth text-center GlitchButtonStyle">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         {text}
-      </a>
+      </div>
     </div>
   );
 }
