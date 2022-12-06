@@ -23,19 +23,6 @@ function Profile() {
   if (localStorage.getItem("jwt") === null) {
     navigate("/");
   }
-  // const canDelete = () => {
-  //   if (decodedToken.rolIdRol === 2) {
-  //     return <CyberButton
-  //       text={"Delete account"}
-  //       onClick={() => navigate("/profiledestroy")}
-  //       className={
-  //         "d-flex align-items-center CyberButtonColorRed1"
-  //       }
-  //     />
-  //   } else {
-  //     return ""
-  //   }
-  // }
 
   if (decodedToken.rolIdRol === 2) {
     return (
