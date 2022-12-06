@@ -9,10 +9,12 @@ export const Content = ({ title, type }) => {
 
   const debouncedSearch = useDebounce(search, 400);
 
-
   return (
-    
-    <ContentGrid title={title} type={type} key={debouncedSearch} search={debouncedSearch} />
-    
+    <ContentGrid
+      title={title}
+      type={type}
+      key={debouncedSearch}
+      search={debouncedSearch}
+    />
   );
 };

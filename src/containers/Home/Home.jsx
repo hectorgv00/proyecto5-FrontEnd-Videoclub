@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import Button from "../../components/Button/Button";
 import { useJwt } from "react-jwt";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
@@ -50,28 +49,17 @@ function Home(props) {
                     <CyberButton
                       text={"Series"}
                       onClick={() => navigate("/series")}
-                      className={"CyberButtonColor d-flex align-items-center justify-content-center"}
+                      className={
+                        "CyberButtonColor d-flex align-items-center justify-content-center"
+                      }
                     />
                     <CyberButton
                       text={"Movies"}
                       onClick={() => navigate("/movies")}
-                      className={"d-flex align-items-center justify-content-center"}
+                      className={
+                        "d-flex align-items-center justify-content-center"
+                      }
                     />
-
-                    {/* <Button
-                      text={"Series"}
-                      onClick={() => navigate("/series")}
-                      className={
-                        "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
-                      }
-                    /> */}
-                    {/* <Button
-                      text={"Movies"}
-                      onClick={() => navigate("/movies")}
-                      className={
-                        "fs-3 text-light buttonDesign d-flex align-items-center bgPink justify-content-center ms-3"
-                      }
-                    /> */}
                   </div>
                 </div>
               </div>

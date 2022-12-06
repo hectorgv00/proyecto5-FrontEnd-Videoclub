@@ -1,5 +1,6 @@
 <p align="center">
   <a href="https://github.com/hectorgv00/proyecto5-FrontEnd-Videoclub" rel="noopener">
+ <img width=250px height=230px src="./src/images/logoSite.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Proyecto-05-Videoclub-Frontend</h3>
@@ -37,7 +38,7 @@ The user of our application must be able to register, login/logout, access their
 All this, visually from the browser.
 <br>
 ![Login](https://user-images.githubusercontent.com/109986640/205515842-04a0404a-8b70-4503-8bd7-431f340bb140.png)
-The user can also do a search in our database, either for movies or series, by their title or by actors who participate in it.
+The user can also do a search in our database, either for movies or series, by their title.
 <br>
 In addition to being able to rent and return movies, the user will be able to access all the information about their ongoing rental.
 ## 🏁 Getting Started <a name = "getting_started"></a>

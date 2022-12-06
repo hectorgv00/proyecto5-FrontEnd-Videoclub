@@ -3,10 +3,10 @@ import { contentData } from "../../slices/contentSlice";
 import "./LoanDetails.css";
 import { useEffect, useState } from "react";
 import { Spinner } from "../../components/Spinner/Spinner";
-import Button from "../../components/Button/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { API } from "../../utils/httpClient";
+import { API } from "../../services/httpClient";
+
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 export const LoanDetails = () => {
@@ -27,17 +27,11 @@ export const LoanDetails = () => {
 
   const returnContent = async () => {
     let config = {
-
       headers: { Authorization: "Bearer " + localStorageToken },
     };
-    await axios.patch(
-      `${API}/loans/myloans/return`,
-      body,
-      config
-    );
+    await axios.patch(`${API}/loans/myloans/return`, body, config);
     navigate("/profileloans");
   };
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -69,9 +63,7 @@ export const LoanDetails = () => {
           <CyberButton
             text={"Return"}
             onClick={returnContent}
-            className={
-              "CyberButtonColor d-flex align-items-center "
-            }
+            className={"CyberButtonColor d-flex align-items-center "}
           />
         </div>
       </div>
