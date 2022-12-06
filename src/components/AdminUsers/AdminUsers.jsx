@@ -13,18 +13,16 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [boolean, setBoolean] = useState(true);
   const [show, setShow] = useState(false);
-  const [idButton, setIdButton] = useState(0)
+  const [idButton, setIdButton] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-
   const pushIndex = (e) => {
-    handleShow()
+    handleShow();
     let buttonId = e.target.id;
-    setIdButton(buttonId)
-  }
+    setIdButton(buttonId);
+  };
 
   const navigate = useNavigate();
   const localStorageToken = localStorage.getItem("jwt");
@@ -54,8 +52,6 @@ export default function AdminUsers() {
     setIdButton(0);
     setBoolean(!boolean);
   };
-
-  
 
   return (
     <div className="container-fluid bg-black d-flex justify-content-center align-items-center mt-4">
@@ -130,41 +126,42 @@ export default function AdminUsers() {
                       </p>
                     </div>
                     <div className="col-12 col-md-1 d-flex justify-content-center align-items-center ">
-                    {(user.rolIdRol === 1)? <p>Admin</p>:
-                    
-                    
-                      <p className="d-flex align-items-center">
-                        <Button
-                          variant="danger"
-                          onClick={e=>pushIndex(e)}
-                          id={index}
-                        >
-                          X
-                        </Button>
+                      {user.rolIdRol === 1 ? (
+                        <p>Admin</p>
+                      ) : (
+                        <p className="d-flex align-items-center">
+                          <Button
+                            variant="danger"
+                            onClick={(e) => pushIndex(e)}
+                            id={index}
+                          >
+                            X
+                          </Button>
 
-                        <Modal show={show} onHide={handleClose}>
-                          <Modal.Header closeButton>
-                            <Modal.Title>Delete User</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body></Modal.Body>
-                          <p className="ms-3">
-                            Are you sure that you want to delete {users[idButton].name}'s user?
-                          </p>
-                          <Modal.Footer>
-                            <Button variant="success" onClick={handleClose}>
-                              Go Back
-                            </Button>
+                          <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Delete User</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body></Modal.Body>
+                            <p className="ms-3">
+                              Are you sure that you want to delete{" "}
+                              {users[idButton].name}'s user?
+                            </p>
+                            <Modal.Footer>
+                              <Button variant="success" onClick={handleClose}>
+                                Go Back
+                              </Button>
 
-                            <Button
-                              onClick={(e) => handlerDelete(e)}
-                              variant="danger"
+                              <Button
+                                onClick={(e) => handlerDelete(e)}
+                                variant="danger"
                               >
-                              Delete
-                            </Button>
-                          </Modal.Footer>
-                        </Modal>
-                      </p>
-                    }
+                                Delete
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

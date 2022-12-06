@@ -159,7 +159,7 @@ function Login() {
               <CyberButton
                 text={"Login"}
                 className={
-                  "d-flex align-items-center "
+                  "d-flex align-items-center GlitchButtonReflex"
                 }
                 onClick={(e) => submitLogin(e)}
               />

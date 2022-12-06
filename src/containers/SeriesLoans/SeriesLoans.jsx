@@ -18,14 +18,7 @@ export const SeriesLoans = ({ series }) => {
       ) : (
         <div className="d-flex justify-content-center align-items-center flex-column">
           <p>You don't have series yet... check out our colecction</p>
-          {/* <Button
-                  text={"Series"}
-                  onClick={() => navigate("/series")}
-                  className={
-                    "fs-3 text-light buttonDesign d-flex align-items-center bgPurple justify-content-center ms-3"
-                  }
-                /> */}
-          <CyberButton text={"Series"} onClick={() => navigate("/series")} />
+          <CyberButton className={"GlitchButtonReflex  d-flex align-items-center"} text={"Series"} onClick={() => navigate("/series")} />
         </div>
       )}
     </div>

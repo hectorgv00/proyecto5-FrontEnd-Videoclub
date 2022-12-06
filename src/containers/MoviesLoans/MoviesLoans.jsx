@@ -22,7 +22,7 @@ export const MoviesLoans = ({ movies }) => {
           <CyberButton
             text={"Movies"}
             onClick={() => navigate("/movies")}
-            className={" d-flex align-items-center"}
+            className={" d-flex align-items-center "}
           />
         </div>
       )}

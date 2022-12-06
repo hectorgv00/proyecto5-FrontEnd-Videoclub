@@ -63,7 +63,7 @@ export const LoanDetails = () => {
           <CyberButton
             text={"Return"}
             onClick={returnContent}
-            className={"CyberButtonColor d-flex align-items-center "}
+            className={"CyberButtonColor d-flex align-items-center GlitchButtonReflex"}
           />
         </div>
       </div>
