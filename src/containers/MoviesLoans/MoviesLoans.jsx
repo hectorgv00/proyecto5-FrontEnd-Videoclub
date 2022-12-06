@@ -1,11 +1,9 @@
 import { LoanCard } from "../LoanCard/LoanCard";
-import Button from '../../components/Button/Button';
 import "./MoviesLoans.css";
 import { useNavigate } from "react-router-dom";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 export const MoviesLoans = ({ movies }) => {
-
   const navigate = useNavigate();
 
   return (
@@ -24,9 +22,7 @@ export const MoviesLoans = ({ movies }) => {
           <CyberButton
             text={"Movies"}
             onClick={() => navigate("/movies")}
-            className={
-              " d-flex align-items-center"
-            }
+            className={" d-flex align-items-center"}
           />
         </div>
       )}

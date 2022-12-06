@@ -1,16 +1,15 @@
-.spinnerDesign{
-    display: flex;
-    justify-content: center;
-    margin: 2em;
-
+.spinnerDesign {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
 }
 
 .spinning {
-    animation: spinner 2s linear infinite;
+  animation: spinner 2s linear infinite;
 }
 
 @keyframes spinner {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }

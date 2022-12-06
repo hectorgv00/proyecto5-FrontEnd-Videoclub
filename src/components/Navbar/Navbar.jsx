@@ -14,7 +14,6 @@ function Navbar(props) {
 
   // Redux items
 
-
   const userReduxCredentials = useSelector(userData);
   const dispatch = useDispatch();
 
@@ -33,27 +32,28 @@ function Navbar(props) {
 
   // We will get the token from the localStorage
   const localStorageToken = localStorage.getItem("jwt");
-  // We will decode it 
+  // We will decode it
   let { decodedToken } = useJwt(localStorageToken);
   // If the token is null, we will insert it a object with the name key and value "" so the app does not crash
   if (decodedToken === null) {
     decodedToken = { name: "" };
   }
 
-
-// Comprobamos si el id del token es de administrador y en caso afirmativo renderizamos el boton del dropdown
-  const admin = ()=>{
-    if(decodedToken.rolIdRol === 1){
-      return               <Dropdown.Item
-      onClick={() => navigate("/profileAdmin")}
-      className="fontFamilyGillSans"
-    >
-      Profile Admin
-    </Dropdown.Item>
-    }else{
-      return ""
+  // Comprobamos si el id del token es de administrador y en caso afirmativo renderizamos el boton del dropdown
+  const admin = () => {
+    if (decodedToken.rolIdRol === 1) {
+      return (
+        <Dropdown.Item
+          onClick={() => navigate("/profileAdmin")}
+          className="fontFamilyGillSans"
+        >
+          Profile Admin
+        </Dropdown.Item>
+      );
+    } else {
+      return "";
     }
-  }
+  };
 
   // We render the app depending on the existance of the token
   if (
@@ -66,17 +66,22 @@ function Navbar(props) {
       <div className="navbarDesign container-fluid fixed-top">
         <div className=" row justify-content-around">
           <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center ps-0 mt-0  ps-lg-3">
-            <img src={logo} onClick={()=> navigate("/")} className="logo image-fluid cursor-pointer" alt="logo" />
+            <img
+              src={logo}
+              onClick={() => navigate("/")}
+              className="logo image-fluid cursor-pointer"
+              alt="logo"
+            />
           </div>
 
           <div className="col-3 col-lg-1 d-xl-flex align-items-center d-none  justify-content-center pe-0 ps-0 pe-lg-5 mt-3 ">
-            <h1 onClick={()=> navigate("/")} className="direct cursor-pointer">Direct</h1>
+            <h1 onClick={() => navigate("/")} className="direct cursor-pointer">
+              Direct
+            </h1>
           </div>
 
           <div className="col-9 col-lg-10 d-flex justify-content-end align-items-center mt-3 pe-5 pe-lg-0">
             <ul className="listDesign d-flex justify-content-center">
-
-
               <li className="pink fontsize1-5em ms-2">{decodedToken.name}</li>
               {/* Bootstrap Dropdown */}
               <Dropdown>
@@ -102,10 +107,6 @@ function Navbar(props) {
 
                   {/* Si el rol del token es administrador aparecerá la parte del dropdown del admin */}
                   {admin()}
-                
-                
-                
-        
 
                   <Dropdown.Divider />
                   <Dropdown.Item
@@ -126,20 +127,27 @@ function Navbar(props) {
   return (
     // Without Token
     <div className="navbarDesign container-fluid fixed-top">
-
       <div className=" row justify-content-around">
-      <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center mt-3 ps-0 ps-lg-3">
-            <img src={logo} onClick={()=> navigate("/")} className="logo image-fluid cursor-pointer" alt="logo" />
-          </div>
+        <div className="col-3 col-lg-1 justify-content-center d-flex align-items-center mt-3 ps-0 ps-lg-3">
+          <img
+            src={logo}
+            onClick={() => navigate("/")}
+            className="logo image-fluid cursor-pointer"
+            alt="logo"
+          />
+        </div>
 
-          <div className="col-3 col-lg-1 d-xl-flex align-items-center d-none  justify-content-center pe-0 ps-0 pe-lg-5 mt-3 ">
-            <h1 onClick={()=> navigate("/")} className="direct cursor-pointer">Direct</h1>
-          </div>
+        <div className="col-3 col-lg-1 d-xl-flex align-items-center d-none  justify-content-center pe-0 ps-0 pe-lg-5 mt-3 ">
+          <h1 onClick={() => navigate("/")} className="direct cursor-pointer">
+            Direct
+          </h1>
+        </div>
 
         <div className="col-9 col-lg-10 d-flex justify-content-end align-items-center mt-3 pe-5 pe-lg-0">
           <ul className="listDesign d-flex justify-content-center">
-
-            <li onClick={()=> navigate("/login")} className="links">Login</li>
+            <li onClick={() => navigate("/login")} className="links">
+              Login
+            </li>
             <li onClick={() => navigate("/register")} className="links">
               Register
             </li>

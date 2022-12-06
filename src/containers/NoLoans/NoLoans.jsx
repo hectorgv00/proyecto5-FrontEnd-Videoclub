@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 import "./NoLoans.css";
@@ -15,16 +14,12 @@ export const NoLoans = () => {
         <CyberButton
           text={"Movies"}
           onClick={() => navigate("/movies")}
-          className={
-            " d-flex align-items-center me-3"
-          }
+          className={" d-flex align-items-center me-3"}
         />
         <CyberButton
           text={"Series"}
           onClick={() => navigate("/series")}
-          className={
-            "CyberButtonColor d-flex align-items-center ms-3"
-          }
+          className={"CyberButtonColor d-flex align-items-center ms-3"}
         />
       </div>
     </div>

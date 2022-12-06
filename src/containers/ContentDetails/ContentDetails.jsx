@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ContentDetails.css";
-import { httpGet } from "../../utils/httpClient";
+import { httpGet, API } from "../../services/httpClient";
 import { Spinner } from "../../components/Spinner/Spinner";
-// import CyberButton from "../../components/Button/Button";
 import { useSelector } from "react-redux";
 import { userData } from "../../slices/userSlice";
 import { contentData } from "../../slices/contentSlice";
 import axios from "axios";
-import { API } from "../../utils/httpClient";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 export const ContentDetails = () => {
@@ -42,7 +40,6 @@ export const ContentDetails = () => {
 
   if (!movie) return null;
 
-  // Body to add loan
 
   let body = {
     article: movie[0].articleIdArticles,

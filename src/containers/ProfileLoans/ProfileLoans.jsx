@@ -1,7 +1,7 @@
 import "./ProfileLoans.css";
 import { useEffect, useState } from "react";
 import "../../components/Button/Button.css";
-import { httpGet } from "../../utils/httpClient";
+import { httpGet2 } from "../../services/httpClient";
 import { NoLoans } from "../NoLoans/NoLoans";
 import { MoviesLoans } from "../MoviesLoans/MoviesLoans";
 import { SeriesLoans } from "../SeriesLoans/SeriesLoans";
@@ -12,13 +12,27 @@ export const ProfileLoans = () => {
   const [series, setSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  
+  
+  console.log(movies)
+  console.log(series)
+  
   useEffect(() => {
-    httpGet("loans", "myloans", "movies").then((data) => setMovies(data));
-  }, []);
+    const jwt = localStorage.getItem("jwt")
+    httpGet2("loans", "myloans", "movies", jwt).then((data) => setMovies(data));
+    return () => {
+      setMovies([]) 
+    }
+  },[]);
 
   useEffect(() => {
-    httpGet("loans", "myloans", "series").then((data) => setSeries(data));
-  }, []);
+    const jwt = localStorage.getItem("jwt")
+
+    httpGet2("loans", "myloans", "series", jwt).then((data) => setSeries(data));
+    return () => {
+      setSeries([]) 
+    }
+  },[]);
 
   setTimeout(() => {
     setIsLoading(false);

@@ -3,13 +3,8 @@ import "./CyberButton.css";
 
 function CyberButton({ className, text, onClick }) {
   return (
-    <div
-      className={className}
-      onClick={onClick}
-      role="button"
-
-    >
-      <div  className="GlitchButtonWidth text-center GlitchButtonStyle">
+    <div className={className} onClick={onClick} role="button">
+      <div className="GlitchButtonWidth text-center GlitchButtonStyle">
         <span></span>
         <span></span>
         <span></span>
