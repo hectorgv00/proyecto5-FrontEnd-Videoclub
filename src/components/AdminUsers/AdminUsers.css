@@ -1,17 +1,15 @@
-.bg-grey{
-    background-color: rgb(48, 48, 48);
+.bg-grey {
+  background-color: rgb(48, 48, 48);
 }
 
-.bg-dark-grey{
-    background-color: rgb(23, 23, 23);
-
+.bg-dark-grey {
+  background-color: rgb(23, 23, 23);
 }
 
-.adminUsersDesign{
-    font-size: 1em;
+.adminUsersDesign {
+  font-size: 1em;
 }
 
-.paragraphDesign{
-max-width: 50vw ;
+.paragraphDesign {
+  max-width: 50vw;
 }
-

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "antd";
-import { errorCheck } from "../../services/useful";
+import { errorCheck } from "../../utils/useful";
 import "./Register.css";
-import Button from "../../components/Button/Button";
-// import {registerUser} from  "../../services/calls";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
-import { API } from "../../utils/httpClient";
+import { API } from "../../services/httpClient";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Register(props) {

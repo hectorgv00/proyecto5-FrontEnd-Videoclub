@@ -1,108 +1,103 @@
-.navbarDesign{
-    max-height: 10vh;
-    background-color: #000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      background-image: url(../../images/fondoNavbar.jpg);
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      background-position: 0% 12%;
-      /* background-position: 50% 62%;  */
-      border-bottom: rgb(43, 43, 43, 0.5) 1px solid;
-    }
+.navbarDesign {
+  max-height: 10vh;
+  background-color: #000;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-image: url(../../images/fondoNavbar.jpg);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-position: 0% 12%;
+  /* background-position: 50% 62%;  */
+  border-bottom: rgb(43, 43, 43, 0.5) 1px solid;
+}
 
 .logo {
-height: 4em;
-width: 5em;
-
+  height: 4em;
+  width: 5em;
 }
 
-.listDesign{
-    list-style: none;
-    width: 15vw;
-    margin-right: 5vw;
+.listDesign {
+  list-style: none;
+  width: 15vw;
+  margin-right: 5vw;
 }
 
-.listDesign > li{
-    margin-right: .5em;
+.listDesign > li {
+  margin-right: 0.5em;
 }
 
-.links{
-    color: 	#9700cc;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: color 1s linear;
-    text-shadow: 0 0 15px #9700cc;
+.links {
+  color: #9700cc;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 1s linear;
+  text-shadow: 0 0 15px #9700cc;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
-.fontsize1-5em{
+.fontsize1-5em {
   font-size: 1.5em;
-
 }
 
-.links:hover{
-    transition: color 1s linear;
-    color: 	#f6019d;
-    text-shadow: 0 0 15px #f6019d;
-
+.links:hover {
+  transition: color 1s linear;
+  color: #f6019d;
+  text-shadow: 0 0 15px #f6019d;
 }
 
-.direct{
-    animation: colorChange 10s infinite alternate;
-    color: #9700cc;
+.direct {
+  animation: colorChange 10s infinite alternate;
+  color: #9700cc;
 }
 
 @keyframes colorChange {
-    from {
-        color: 	#9700cc;
-        text-shadow: 0 0 15px #9700cc;
-
-    }
-  
-    to {
-        color: 	#f6019d;
-        text-shadow: 0 0 15px #f6019d;    
-    }
+  from {
+    color: #9700cc;
+    text-shadow: 0 0 15px #9700cc;
   }
 
-  .dropDownDesign{
-    border-radius: 100%;
-    height: 30px;
-    width: 30px;
-    padding: 0 !important;
+  to {
+    color: #f6019d;
+    text-shadow: 0 0 15px #f6019d;
   }
-
-  .userIconDesign{
-    width: 30px;
-    height: 30px;
-  }
-
-  .dropdown-toggle::after {
-    display: none !important; 
-  }
-
-  .dropdownMenuDesign{
-    background-color: #000 !important;
-  }
-
-  .fontFamilyGillSans{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
-    color: #FFF !important;
-  }
-
-  .dropdown-item:active{
-    background-color: #9700cc !important;
 }
-  .dropdown-item:hover{
-    background-color: rgba(151, 0, 204, .3) !important;
-    }
 
-    @media (max-width: 800px) {
-      .logo {
-        height: 6vh;
-        width: 7vh;
-        
-        }
-    }
+.dropDownDesign {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  padding: 0 !important;
+}
+
+.userIconDesign {
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdownMenuDesign {
+  background-color: #000 !important;
+}
+
+.fontFamilyGillSans {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
+  color: #fff !important;
+}
+
+.dropdown-item:active {
+  background-color: #9700cc !important;
+}
+.dropdown-item:hover {
+  background-color: rgba(151, 0, 204, 0.3) !important;
+}
+
+@media (max-width: 800px) {
+  .logo {
+    height: 6vh;
+    width: 7vh;
+  }
+}

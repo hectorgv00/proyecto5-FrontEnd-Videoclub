@@ -4,19 +4,16 @@
   cursor: pointer;
 }
 
-
 .contentGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 230px);
   justify-content: center;
   gap: 40px;
   padding: 40px;
-
 }
 
-.noOverflow{
+.noOverflow {
   overflow: hidden; /* Hide scrollbars */
-
 }
 
 .extraTargetsButtons {
@@ -26,13 +23,11 @@
 }
 
 .extraTargetsButtons > button {
-  margin: .2em;
-  padding: .2em;
-  border-radius: .2em;
+  margin: 0.2em;
+  padding: 0.2em;
+  border-radius: 0.2em;
   font-size: 14px;
-
 }
-
 
 .extraTargetsButtons > button:hover {
   opacity: 0.8;

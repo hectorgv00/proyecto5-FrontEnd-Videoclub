@@ -40,13 +40,11 @@
 @media (max-width: 1000px) {
   .searchButton {
     left: 93%;
-
   }
 }
 
 @media (max-width: 600px) {
-    .searchButton {
-      left: 85%;
-  
-    }
+  .searchButton {
+    left: 85%;
   }
+}

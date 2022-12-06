@@ -1,21 +1,21 @@
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
 
 .loanDetailsDesign {
-    margin-top: 10vh;
+  margin-top: 10vh;
 
-    height: 50vh;
+  height: 50vh;
 
-    color: white;
+  color: white;
 }
 
 .spinnerDesign {
-    margin-top: 10vh;
+  margin-top: 10vh;
 
-    background-color: black;
+  background-color: black;
 }
 
 .detailImage {
-    border-radius: 15px;
+  border-radius: 15px;
 }

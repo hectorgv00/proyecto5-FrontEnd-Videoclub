@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useJwt } from "react-jwt";
 import { Input } from "antd";
-import { errorCheck } from "../../services/useful";
+import { errorCheck } from "../../utils/useful";
 import { useNavigate } from "react-router-dom";
-import { API } from "../../utils/httpClient";
-
-import Button from "../../components/Button/Button";
-
+import { API } from "../../services/httpClient";
 import "./ProfileModify.css";
-
 import { useDispatch } from "react-redux";
 import { userout, login } from "../../slices/userSlice";
 import { Spinner } from "react-bootstrap";
@@ -59,7 +55,7 @@ function ProfileModify() {
       setUserError((prevState) => ({
         ...prevState,
         nocompletedError:
-          "Necesitas introducir nuevos datos para que sean modificados",
+          "You need to add your details to change them",
       }));
     }
   };
@@ -99,14 +95,10 @@ function ProfileModify() {
     } else {
       setUserError((prevState) => ({
         ...prevState,
-        dataError: "No se pudieron actualizar tus datos",
+        dataError: "Your data could not be updated",
       }));
       setIsLoading(false);
     }
-    // if (resp.data === `Tus datos se actualizaron correctamente`) {
-    //   navigate("/profile")
-    // } else {
-    // }
   };
 
   const navigate = useNavigate();
@@ -140,16 +132,14 @@ function ProfileModify() {
     >
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="text-light mb-3">Modifica tus datos</h1>
+          <h1 className="text-light mb-3">Modify your details</h1>
           <div className="errorInput mb-3 ft-5">
             {" "}
             {userError.nocompletedError}{" "}
           </div>
 
-          {/* Spinner para cuando carga */}
           {isLoading ? <Spinner className="purple" /> : ""}
 
-          {/* Inputs */}
 
           <Input
             name="name"

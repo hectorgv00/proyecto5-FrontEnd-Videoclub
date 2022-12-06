@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
-import { errorCheck } from "../../services/useful";
+import { errorCheck } from "../../utils/useful";
 import { userout } from "../../slices/userSlice";
 import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import "./ProfileDestroy.css";
-import { API } from "../../utils/httpClient";
+import { API } from "../../services/httpClient";
 import CyberButton from "../../components/CyberButton/CyberButton";
 
 function ProfileDestroy() {
@@ -39,41 +39,45 @@ function ProfileDestroy() {
         ...prevState,
         nocompletedError: "",
       }));
-      logout()
+      logout();
     } else {
       setUserError((prevState) => ({
         ...prevState,
-        nocompletedError: "You must add your info to be able to destroy your account",
+        nocompletedError:
+          "You must add your info to be able to destroy your account",
       }));
     }
   };
 
-  
   const logout = () => {
     dispatch(userout({ credentials: {} }));
     localStorage.removeItem("jwt");
     return navigate("/");
   };
-  
+
   let validateInputs = () => {
-    if (user.email !== "" && user.password !== "" && userError.emailError === "" && userError.passwordError === "") {
+    if (
+      user.email !== "" &&
+      user.password !== "" &&
+      userError.emailError === "" &&
+      userError.passwordError === ""
+    ) {
       return true;
     }
   };
 
   const userDestroyed = async () => {
-    
-    let resp = await axios.delete(`${API}/users/delete`, { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
-    if(resp.data === "The email is incorrect"){
+    let resp = await axios.delete(`${API}/users/delete`, {
+      data: { email: user.email, password: user.password },
+      headers: { Authorization: "Bearer " + localStorageToken },
+    });
+    if (resp.data === "The email is incorrect") {
       setUserError((prevState) => ({
         ...prevState,
         nocompletedError: "The email or password are incorrect",
-      
       }));
-      return
+      return;
     }
-
-
   };
 
   const navigate = useNavigate();
@@ -93,6 +97,12 @@ function ProfileDestroy() {
       [field + "Error"]: error,
     }));
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      navigate("/");
+    }
+  });
 
   return (
     <form
@@ -135,18 +145,14 @@ function ProfileDestroy() {
 
           <CyberButton
             text={"Delete Account"}
-            className={
-              "CyberButtonColorRed1 d-flex align-items-center "
-            }
+            className={"CyberButtonColorRed1 d-flex align-items-center "}
             onClick={(e) => destroyUser(e)}
           />
 
           <CyberButton
             text={"Go Back"}
             onClick={() => navigate("/profile")}
-            className={
-              "CyberButtonColor d-flex align-items-center "
-            }
+            className={"CyberButtonColor d-flex align-items-center "}
           />
         </div>
       </div>
@@ -155,4 +161,3 @@ function ProfileDestroy() {
 }
 
 export default ProfileDestroy;
-
