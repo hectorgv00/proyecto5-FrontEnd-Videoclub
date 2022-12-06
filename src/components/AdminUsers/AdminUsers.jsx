@@ -13,7 +13,7 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [boolean, setBoolean] = useState(true);
   const [show, setShow] = useState(false);
-  const [idButton, setIdButton] = useState()
+  const [idButton, setIdButton] = useState(0)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -51,6 +51,7 @@ export default function AdminUsers() {
       data: { email: email },
       headers: { Authorization: "Bearer " + localStorageToken },
     });
+    setIdButton(0);
     setBoolean(!boolean);
   };
 
