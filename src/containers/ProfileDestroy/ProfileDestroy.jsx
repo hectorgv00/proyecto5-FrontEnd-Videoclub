@@ -6,8 +6,9 @@ import { errorCheck } from "../../services/useful";
 import { userout } from "../../slices/userSlice";
 import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
 import "./ProfileDestroy.css";
+import { API } from "../../utils/httpClient";
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function ProfileDestroy() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function ProfileDestroy() {
     } else {
       setUserError((prevState) => ({
         ...prevState,
-        nocompletedError: "Es imperativo introducir datos a destruir",
+        nocompletedError: "You must add your info to be able to destroy your account",
       }));
     }
   };
@@ -61,8 +62,17 @@ function ProfileDestroy() {
   };
 
   const userDestroyed = async () => {
+    
+    let resp = await axios.delete(`${API}/users/delete`, { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
+    if(resp.data === "The email is incorrect"){
+      setUserError((prevState) => ({
+        ...prevState,
+        nocompletedError: "The email or password are incorrect",
+      
+      }));
+      return
+    }
 
-    await axios.delete("http://127.0.0.1:3000/users/delete", { data: { email: user.email, password: user.password }, headers: { "Authorization": "Bearer " + localStorageToken } });
 
   };
 
@@ -86,8 +96,9 @@ function ProfileDestroy() {
   useEffect(() => {
     if (localStorage.getItem("jwt") === null) {
       navigate("/");
-    };
+    }
   });
+
   return (
     <form
       onSubmit={(e) => destroyUser(e)}
@@ -96,9 +107,7 @@ function ProfileDestroy() {
       <div className="row">
         <div className="col-12 d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-light mb-3">
-            {decodedToken.name}, si eres tu realmente, introduce tu{" "}
-            <span className="purple">email</span> para{" "}
-            <span className="pink">aniquilar</span> tus datos...
+            {decodedToken.name}, are you sure?
           </h1>
           <div className="errorInput mb-3 ft-5">
             {" "}
@@ -129,18 +138,19 @@ function ProfileDestroy() {
 
           <div className="errorInput mb-3"> {userError.passwordError} </div>
 
-          <Button
-            text={"Elimina tu cuenta"}
+          <CyberButton
+            text={"Delete Account"}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "CyberButtonColorRed1 d-flex align-items-center "
             }
+            onClick={(e) => destroyUser(e)}
           />
 
-          <Button
-            text={"Vuelve a tu area"}
+          <CyberButton
+            text={"Go Back"}
             onClick={() => navigate("/profile")}
             className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
+              "CyberButtonColor d-flex align-items-center "
             }
           />
         </div>
@@ -150,4 +160,3 @@ function ProfileDestroy() {
 }
 
 export default ProfileDestroy;
-

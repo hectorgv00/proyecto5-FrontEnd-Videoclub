@@ -1,20 +1,19 @@
+
 import { useJwt } from "react-jwt";
 import "./Profile.css";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { userout } from "../../slices/userSlice";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-
+import CyberButton from "../../components/CyberButton/CyberButton";
 
 function Profile() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const localStorageToken = localStorage.getItem("jwt");
-
   let { decodedToken } = useJwt(localStorageToken);
-
   if (decodedToken === null) {
     decodedToken = { name: "" };
   };
@@ -23,51 +22,94 @@ function Profile() {
     dispatch(userout({ credentials: {} }));
     localStorage.removeItem("jwt");
     return navigate("/");
-  };
-  useEffect(() => {
-    if (localStorage.getItem("jwt") === null) {
-      navigate("/");
-    };
-  });
-  return (
-    <form className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0">
-      <div className="row">
-        <div className="col-12 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="text-light mb-3">
-            Esta es tu area {decodedToken.name}!
-          </h1>
-          <Button
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
-            }
-            text={"Ver alquileres vigentes"}
-            onClick={() => navigate("/profileloans")}
-          />
-          <Button
-            text={"Modifica tus datos"}
-            onClick={() => navigate("/profilemodify")}
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
-            }
-          />
-          <Button
-            text={"Elimina tu cuenta"}
-            onClick={() => navigate("/profiledestroy")}
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
-            }
-          />
-          <Button
-            onClick={() => logout()}
-            className={
-              "fs-3 text-light buttonDesign d-flex align-items-center bgTransition justify-content-center mt-3"
-            }
-            text={"Deslogeate"}
-          />
+  }
+  if (localStorage.getItem("jwt") === null) {
+    navigate("/");
+  }
+  const canDelete = () => {
+    if (decodedToken.rolIdRol === 2) {
+      return <CyberButton
+        text={"Delete account"}
+        onClick={() => navigate("/profiledestroy")}
+        className={
+          "d-flex align-items-center CyberButtonColorRed1"
+        }
+      />
+    } else {
+      return ""
+    }
+  }
+
+  if (decodedToken.rolIdRol === 2) {
+    return (
+      <div className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0 bgImage">
+        <div className="row">
+          <div className="col-12 d-flex flex-column justify-content-center align-items-center">
+            <h1 className="text-light mb-3">
+              {(decodedToken.name).toUpperCase()}'S AREA
+            </h1>
+            <CyberButton
+              className={"d-flex align-items-center "}
+              text={"Current rentals"}
+              onClick={() => navigate("/profileloans")}
+            />
+            <CyberButton
+              text={"Modify profile"}
+              onClick={() => navigate("/profilemodify")}
+              className={
+                "CyberButtonColor d-flex align-items-center "
+              }
+            />
+            {canDelete()}
+            <CyberButton
+              onClick={() => logout()}
+              className={
+                "d-flex align-items-center CyberButtonColorRed2"
+              }
+              text={"Log out"}
+            />
+          </div>
         </div>
       </div>
-    </form>
-  );
+    );
+  } else {
+    return (
+      <div className="container-fluid bg-black vh-100 d-flex justify-content-center align-items-center mt-5 mt-lg-0 bgImage">
+        <div className="row">
+          <div className="col-12 d-flex flex-column justify-content-center align-items-center">
+            <h1 className="text-light mb-3">
+              {(decodedToken.name).toUpperCase()}'S AREA
+            </h1>
+            <CyberButton
+              className={"d-flex align-items-center "}
+              text={"Current rentals"}
+              onClick={() => navigate("/profileloans")}
+            />
+            <CyberButton
+              text={"Modify profile"}
+              onClick={() => navigate("/profilemodify")}
+              className={
+                "CyberButtonColor d-flex align-items-center "
+              }
+            />
+            {/* <CyberButton
+            text={"Delete account"}
+            onClick={() => navigate("/profiledestroy")}
+            className={
+              "d-flex align-items-center CyberButtonColorRed1"
+            }
+          /> */}
+            <CyberButton
+              onClick={() => logout()}
+              className={
+                "d-flex align-items-center CyberButtonColorRed2"
+              }
+              text={"Log out"}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default Profile;
