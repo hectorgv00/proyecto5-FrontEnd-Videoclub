@@ -49,7 +49,7 @@ function Profile() {
             />
             <CyberButton
               onClick={() => logout()}
-              className={"d-flex align-items-center CyberButtonColorRed2"}
+              className={"d-flex align-items-center CyberButtonColorRed2 GlitchButtonReflex"}
               text={"Log out"}
             />
           </div>
@@ -76,7 +76,7 @@ function Profile() {
             />
             <CyberButton
               onClick={() => logout()}
-              className={"d-flex align-items-center CyberButtonColorRed2"}
+              className={"d-flex align-items-center CyberButtonColorRed2 GlitchButtonReflex"}
               text={"Log out"}
             />
           </div>

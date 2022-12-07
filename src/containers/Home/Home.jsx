@@ -50,14 +50,14 @@ function Home(props) {
                       text={"Series"}
                       onClick={() => navigate("/series")}
                       className={
-                        "CyberButtonColor d-flex align-items-center justify-content-center"
+                        "CyberButtonColor d-flex align-items-center justify-content-center GlitchButtonReflex"
                       }
                     />
                     <CyberButton
                       text={"Movies"}
                       onClick={() => navigate("/movies")}
                       className={
-                        "d-flex align-items-center justify-content-center"
+                        "d-flex align-items-center justify-content-center GlitchButtonReflex"
                       }
                     />
                   </div>

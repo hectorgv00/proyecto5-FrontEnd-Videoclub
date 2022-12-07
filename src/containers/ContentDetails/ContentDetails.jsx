@@ -91,7 +91,7 @@ export const ContentDetails = () => {
             <CyberButton
               text={"Order"}
               className={
-                "d-flex align-items-center"
+                "d-flex align-items-center GlitchButtonReflex"
               }
               onClick={addLoan}
             />
@@ -122,7 +122,7 @@ export const ContentDetails = () => {
             
             text={"Login"}
             className={
-              "d-flex align-items-center "
+              "d-flex align-items-center GlitchButtonReflex"
             }
             onClick={() => navigate("/login")}
             />
