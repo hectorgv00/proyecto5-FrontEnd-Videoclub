@@ -17,7 +17,7 @@ export const Search = () => {
           autoFocus
           className="searchInput"
           type="text"
-          placeholder="Search..."
+          placeholder="Search by title or genre..."
           value={search ?? ""}
           onChange={(e) =>
             setSearchText({
