@@ -152,7 +152,7 @@ function ProfileDestroy() {
           <CyberButton
             text={"Go Back"}
             onClick={() => navigate("/profile")}
-            className={"CyberButtonColor d-flex align-items-center "}
+            className={"CyberButtonColor d-flex align-items-center GlitchButtonReflex"}
           />
         </div>
       </div>

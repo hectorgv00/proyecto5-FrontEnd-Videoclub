@@ -267,7 +267,7 @@ function Register(props) {
 
           <CyberButton
             className={
-              "CyberButtonColor d-flex align-items-center "
+              "CyberButtonColor d-flex align-items-center GlitchButtonReflex"
             }
             text={"Register"}
             onClick={sendBody}
